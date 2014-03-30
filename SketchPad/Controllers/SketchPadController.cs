@@ -44,33 +44,62 @@ namespace SketchPad.Controllers
 
         public void clearBtn_Click(object sender, EventArgs e)
         {
-            _sketchpad.splitContainer1.Panel2.Invalidate();
-            _state.clearShapes();
+            try
+            {
+                _sketchpad.splitContainer1.Panel2.Invalidate();
+                _state.clearShapes();
+            }
+            catch
+            {
+
+            }
         }
 
         public void mouseDown(object sender, MouseEventArgs e)
         {
-            _state._isMouseDown = true;
-            init_x = e.X;
-            init_y = e.Y;
-            this.drawShape(e.X, e.Y, e.X, e.Y);
+            try
+            {
+                _state._isMouseDown = true;
+                init_x = e.X;
+                init_y = e.Y;
+                this.drawShape(e.X, e.Y, e.X, e.Y);
+            }
+            catch
+            {
+
+            }
         }
 
         public void mouseUp(object sender, MouseEventArgs e)
         {
-            _state._isMouseDown = false;
-            clearShape();
-            this.drawShape(init_x, init_y, e.X, e.Y);
-            _state.addShape(_current_shape);
-            _current_shape = null;
+
+            try
+            {
+                _state._isMouseDown = false;
+                clearShape();
+                this.drawShape(init_x, init_y, e.X, e.Y);
+                _state.addShape(_current_shape);
+                _current_shape = null;
+            }
+            catch
+            {
+
+            }
         }
 
         public void mouseMove(object sender, MouseEventArgs e)
         {
-            if (_state._isMouseDown)
+            try
             {
-                clearShape();
-                this.drawShape(init_x, init_y, e.X, e.Y);
+                if (_state._isMouseDown)
+                {
+                    clearShape();
+                    this.drawShape(init_x, init_y, e.X, e.Y);
+                }
+            }
+            catch
+            {
+
             }
         }
 
@@ -88,7 +117,7 @@ namespace SketchPad.Controllers
             else if (_state._selected_shape == "Rectangle")
             {
                 _current_shape = _sketchpad.splitContainer1.Panel2.CreateGraphics();
-                _current_shape.DrawRectangle(_state.getPen(), x1, y1, x2-x1, y2-y1);
+                _current_shape.DrawRectangle(_state.getPen(), x1, y1, Math.Abs(x2-x1), Math.Abs(y2-y1));
             }
             else if (_state._selected_shape == "Ellipse")
             {
