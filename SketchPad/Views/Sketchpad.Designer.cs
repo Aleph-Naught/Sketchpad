@@ -40,8 +40,10 @@
             this.squareBtn = new System.Windows.Forms.Button();
             this.ellipseBtn = new System.Windows.Forms.Button();
             this.colourDialog = new System.Windows.Forms.ColorDialog();
+            this.canvas1 = new SketchPad.Canvas();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.shapeGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -61,9 +63,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
-            this.splitContainer1.Panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_Panel2_MouseDown);
-            this.splitContainer1.Panel2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_Panel2_MouseMove);
-            this.splitContainer1.Panel2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.splitContainer1_Panel2_MouseUp);
+            this.splitContainer1.Panel2.Controls.Add(this.canvas1);
             this.splitContainer1.Size = new System.Drawing.Size(768, 495);
             this.splitContainer1.SplitterDistance = 125;
             this.splitContainer1.TabIndex = 0;
@@ -179,6 +179,18 @@
             this.colourDialog.AllowFullOpen = false;
             this.colourDialog.SolidColorOnly = true;
             // 
+            // canvas1
+            // 
+            this.canvas1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.canvas1.Location = new System.Drawing.Point(0, 0);
+            this.canvas1.Name = "canvas1";
+            this.canvas1.Size = new System.Drawing.Size(639, 495);
+            this.canvas1.TabIndex = 0;
+            this.canvas1.Paint += new System.Windows.Forms.PaintEventHandler(this.canvas1_Paint);
+            this.canvas1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseDown);
+            this.canvas1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseMove);
+            this.canvas1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseUp);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,6 +201,7 @@
             this.Name = "mainForm";
             this.Text = "SketchPad";
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.shapeGroupBox.ResumeLayout(false);
@@ -210,6 +223,7 @@
         private System.Windows.Forms.GroupBox shapeGroupBox;
         private System.Windows.Forms.Button clearBtn;
         public System.Windows.Forms.SplitContainer splitContainer1;
+        public Canvas canvas1;
     }
 }
 

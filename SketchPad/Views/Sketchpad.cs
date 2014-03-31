@@ -17,7 +17,7 @@ namespace SketchPad
         public mainForm()
         {
             InitializeComponent();
-            _controller = new Controllers.SketchPadController();
+            _controller = new Controllers.SketchPadController(this);
         }
 
         public ColorDialog getColourDialog()
@@ -35,24 +35,30 @@ namespace SketchPad
             _controller.colourBtn_Click(sender, e);
         }
 
-        private void splitContainer1_Panel2_MouseDown(object sender, MouseEventArgs e)
-        {
-            _controller.mouseDown(sender, e);
-        }
-
-        private void splitContainer1_Panel2_MouseUp(object sender, MouseEventArgs e)
-        {
-            _controller.mouseUp(sender, e);
-        }
-
-        private void splitContainer1_Panel2_MouseMove(object sender, MouseEventArgs e)
-        {
-            _controller.mouseMove(sender, e);
-        }
-
         private void clearBtn_Click(object sender, EventArgs e)
         {
             _controller.clearBtn_Click(sender, e);
         }
+
+        private void canvas1_MouseDown(object sender, MouseEventArgs e)
+        {
+            _controller.mouseDown(sender, e);
+        }
+
+        private void canvas1_MouseUp(object sender, MouseEventArgs e)
+        {
+            _controller.mouseUp(sender, e);
+        }
+
+        private void canvas1_MouseMove(object sender, MouseEventArgs e)
+        {
+            _controller.mouseMove(sender, e);
+        }
+
+        private void canvas1_Paint(object sender, PaintEventArgs e)
+        {
+            _controller.paint(sender, e);
+        }
+
     }
 }

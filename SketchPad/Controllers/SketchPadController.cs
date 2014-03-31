@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using SketchPad.Models;
+using System.Reflection;
 
 namespace SketchPad.Controllers
 {
@@ -14,19 +16,41 @@ namespace SketchPad.Controllers
         private SketchPad.Models.SketchPadState _state;
 
         private Graphics _current_shape;
+
+        private Shape current_shape;
+
         private int init_x, init_y;
 
-        public SketchPadController()
+        public SketchPadController(mainForm form)
         {
+            _sketchpad = form;
             _state = new Models.SketchPadState();
+
+            _current_shape = _sketchpad.canvas1.CreateGraphics();
+
+            current_shape = new Line();
+
         }
 
         public void shapeBtn_Click(object sender, EventArgs e)
         {
-            _sketchpad = (mainForm)((Button)sender).FindForm();
             Button clickedBtn = (Button)sender;
 
             _state._selected_shape = clickedBtn.Text;
+
+            
+            String typeName = clickedBtn.Text;
+
+            typeName = typeName.Replace(' ', '_');
+
+
+            var assembly = Assembly.GetExecutingAssembly();
+
+            var type = assembly.GetTypes()
+                .First(t => t.Name == typeName);
+
+            current_shape = (Shape)Activator.CreateInstance(type);
+
         }
 
         public void colourBtn_Click(object sender, EventArgs e)
@@ -44,33 +68,40 @@ namespace SketchPad.Controllers
 
         public void clearBtn_Click(object sender, EventArgs e)
         {
-            _sketchpad.splitContainer1.Panel2.Invalidate();
+            _sketchpad.canvas1.Invalidate();
             _state.clearShapes();
         }
 
         public void mouseDown(object sender, MouseEventArgs e)
         {
+
+            var assembly = Assembly.GetExecutingAssembly();
+
+            var type = current_shape.GetType();
+
+            current_shape = (Shape)Activator.CreateInstance(type);
+
             _state._isMouseDown = true;
             init_x = e.X;
             init_y = e.Y;
-            this.drawShape(e.X, e.Y, e.X, e.Y);
         }
 
         public void mouseUp(object sender, MouseEventArgs e)
         {
+            Shape shape = current_shape.clone();
             _state._isMouseDown = false;
-            clearShape();
-            this.drawShape(init_x, init_y, e.X, e.Y);
-            _state.addShape(_current_shape);
-            _current_shape = null;
+            _state.addShape(shape);
         }
 
         public void mouseMove(object sender, MouseEventArgs e)
         {
             if (_state._isMouseDown)
             {
-                clearShape();
-                this.drawShape(init_x, init_y, e.X, e.Y);
+                _sketchpad.canvas1.Refresh();
+
+                current_shape.set(new int[]{init_x, init_y, e.X, e.Y});
+
+                current_shape.draw(_sketchpad.canvas1.CreateGraphics(), _state.getPen());
             }
         }
 
@@ -78,21 +109,21 @@ namespace SketchPad.Controllers
         {
             if (_state._selected_shape == "Free Hand")
             {
-
+                
             }
             else if (_state._selected_shape == "Line")
             {
-                _current_shape = _sketchpad.splitContainer1.Panel2.CreateGraphics();
                 _current_shape.DrawLine(_state.getPen(), x1, y1, x2, y2);
             }
             else if (_state._selected_shape == "Rectangle")
             {
-                _current_shape = _sketchpad.splitContainer1.Panel2.CreateGraphics();
+                _current_shape = _sketchpad.canvas1.CreateGraphics();
                 _current_shape.DrawRectangle(_state.getPen(), x1, y1, x2-x1, y2-y1);
             }
             else if (_state._selected_shape == "Ellipse")
             {
-
+                _current_shape = _sketchpad.canvas1.CreateGraphics();
+                _current_shape.DrawEllipse(_state.getPen(), x2, y2, x1 - x2, y2 - y1);
             }
             else if (_state._selected_shape == "Square")
             {
@@ -108,10 +139,13 @@ namespace SketchPad.Controllers
             }
         }
 
-        public void clearShape()
+        public void paint(object sender, PaintEventArgs e)
         {
-            //probably a bad way to clear the obj
-            _current_shape.Clear(Color.White);
+            foreach(var graphic in _state.getShapes())
+            {
+                graphic.draw(e.Graphics, _state.getPen());
+            }
+
         }
     }
 }

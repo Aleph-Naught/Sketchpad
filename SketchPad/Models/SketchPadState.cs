@@ -12,7 +12,7 @@ namespace SketchPad.Models
         public string _selected_shape { get; set; }
         public Color _selected_colour { get; set; }
         public Boolean _isMouseDown { get; set; }
-        private List<Graphics> _shapes;
+        private List<Shape> _shapes;
         private Pen pen;
         private float width = 5;
 
@@ -21,15 +21,15 @@ namespace SketchPad.Models
             _selected_shape = "Free Hand";
             _selected_colour = Color.Black;
             _isMouseDown = false;
-            _shapes = new List<Graphics>();
+            _shapes = new List<Shape>();
         }
 
-        public void addShape(Graphics g)
+        public void addShape(Shape g)
         {
             _shapes.Add(g);
         }
 
-        public List<Graphics> getShapes()
+        public List<Shape> getShapes()
         {
             return _shapes;
         }
