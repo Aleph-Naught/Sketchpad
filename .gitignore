@@ -106,3 +106,13 @@ Generated_Code #added for RIA/Silverlight projects
 _UpgradeReport_Files/
 Backup*/
 UpgradeLog*.XML
+SketchPad/bin/Debug/SketchPad.exe
+SketchPad/bin/Debug/SketchPad.pdb
+SketchPad/bin/Debug/SketchPad.vshost.exe
+SketchPad/obj/Debug/DesignTimeResolveAssemblyReferences.cache
+SketchPad/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+SketchPad/obj/Debug/SketchPad.csproj.FileListAbsolute.txt
+SketchPad/obj/Debug/SketchPad.csproj.GenerateResource.Cache
+SketchPad/obj/Debug/SketchPad.csprojResolveAssemblyReference.cache
+SketchPad/obj/Debug/SketchPad.exe
+SketchPad/obj/Debug/SketchPad.pdb
