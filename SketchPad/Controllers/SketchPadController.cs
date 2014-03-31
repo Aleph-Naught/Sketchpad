@@ -28,7 +28,7 @@ namespace SketchPad.Controllers
 
             _current_shape = _sketchpad.canvas1.CreateGraphics();
 
-            current_shape = new Line();
+            current_shape = new Line(Color.Black, 5);
 
         }
 
@@ -49,7 +49,7 @@ namespace SketchPad.Controllers
             var type = assembly.GetTypes()
                 .First(t => t.Name == typeName);
 
-            current_shape = (Shape)Activator.CreateInstance(type);
+            current_shape = (Shape)Activator.CreateInstance(type, _state._selected_colour, 5);
 
         }
 
@@ -57,7 +57,7 @@ namespace SketchPad.Controllers
         {
             _sketchpad = (mainForm)((Button)sender).FindForm();
 
-            ColorDialog  colourDialog = _sketchpad.getColourDialog();
+            ColorDialog colourDialog = _sketchpad.getColourDialog();
             colourDialog.Color = _state._selected_colour;
 
             if (colourDialog.ShowDialog() == DialogResult.OK)
@@ -79,7 +79,7 @@ namespace SketchPad.Controllers
 
             var type = current_shape.GetType();
 
-            current_shape = (Shape)Activator.CreateInstance(type);
+            current_shape = (Shape)Activator.CreateInstance(type, _state._selected_colour, 5);
 
             _state._isMouseDown = true;
             init_x = e.X;
@@ -98,6 +98,8 @@ namespace SketchPad.Controllers
             if (_state._isMouseDown)
             {
                 _sketchpad.canvas1.Refresh();
+
+                //_sketchpad.canvas1.Invalidate();
 
                 current_shape.set(new int[]{init_x, init_y, e.X, e.Y});
 

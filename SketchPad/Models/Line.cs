@@ -8,29 +8,34 @@ using System.Windows.Forms;
 
 namespace SketchPad.Models
 {
-    class Line : Shape
+    class Line : Brush, Shape
     {
 
         List<Point> points;
 
         public Shape clone()
         {
-            Shape clone = new Line(points[0], points[1]);
+            Shape clone = new Line(points[0], points[1], color, penWidth);
             return clone;
         }
 
-        public Line(Point p1, Point p2)
+        public Line(Point p1, Point p2, Color c, int w)
         {
             points = new List<Point>();
             points.Add(p1);
             points.Add(p2);
+            color = c;
+            penWidth = w;
         }
 
-        public Line()
+        public Line(Color c, int w)
         {
             points = new List<Point>();
             points.Add(new Point(0, 0));
             points.Add(new Point(0, 0));
+
+            color = c;
+            penWidth = w;
         }
 
         public Line(int init_x, int init_y, int x, int y)
@@ -42,7 +47,8 @@ namespace SketchPad.Models
 
         public void draw(Graphics g, Pen p)
         {
-            g.DrawLine(p, points[0], points[1]);
+            Pen i = new Pen(color, penWidth);
+            g.DrawLine(i, points[0], points[1]);
            
         }
 

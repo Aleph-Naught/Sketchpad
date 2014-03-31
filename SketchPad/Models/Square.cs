@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace SketchPad.Models
 {
-    class Square : Shape
-    {
+    class Square : Brush, Shape
+    {   
+
         int x;
         int y;
         int width;
@@ -16,26 +17,36 @@ namespace SketchPad.Models
 
         public Shape clone()
         {
-            Shape clone = new Square(x, y, width, height);
+
+            //newShape.
+
+            Shape clone = new Square(x, y, width, height, color, penWidth);
             return clone;
         }
 
-        public Square()
+        public Square(Color c, int w)
         {
             x = y = width = height = 0;
+
+            color = c;
+            penWidth = w;
         }
 
-        public Square(int init_x, int init_y, int _x, int _y)
+        public Square(int init_x, int init_y, int _x, int _y, Color c, int w)
         {
             x = init_x;
             y = init_y;
             width = _x;
             height = _x;
+            color = c;
+            penWidth = w;
         }
 
         public void draw(Graphics g, System.Drawing.Pen p)
         {
-            g.DrawRectangle(p, new System.Drawing.Rectangle(x, y, width, height));
+            Pen i = new Pen(color, penWidth);
+
+            g.DrawRectangle(i, new System.Drawing.Rectangle(x, y, width, height));
         }
 
         public void set(int[] paramaters)

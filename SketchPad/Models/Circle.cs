@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SketchPad.Models
 {
-    class Circle : Shape
+    class Circle : Brush, Shape
     {
          int x;
         int y;
@@ -16,26 +16,32 @@ namespace SketchPad.Models
 
         public Shape clone()
         {
-            Shape clone = new Circle(x, y, width, height);
+            Shape clone = new Circle(x, y, width, height, color, penWidth);
             return clone;
         }
 
-        public Circle()
+        public Circle(Color c, int w)
         {
             x = y = width = height = 0;
+
+            color = c;
+            penWidth = w;
         }
 
-        public Circle(int init_x, int init_y, int _x, int _y)
+        public Circle(int init_x, int init_y, int _x, int _y, Color c, int w)
         {
             x = init_x;
             y = init_y;
             width = _x;
             height = _x;
+            color = c;
+            penWidth = w;
         }
 
         public void draw(Graphics g, System.Drawing.Pen p)
         {
-            g.DrawEllipse(p, new System.Drawing.Rectangle(x, y, width, height));
+            Pen i = new Pen(color, penWidth);
+            g.DrawEllipse(i, new System.Drawing.Rectangle(x, y, width, height));
         }
 
         public void set(int[] paramaters)

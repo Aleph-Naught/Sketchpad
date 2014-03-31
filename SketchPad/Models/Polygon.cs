@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SketchPad.Models
 {
-    class Polygon : Shape
+    class Polygon : Brush, Shape
     {
         List<PointF> points;
    
@@ -16,9 +16,12 @@ namespace SketchPad.Models
             points = new List<PointF>();
         }
 
-        public Polygon(List<PointF> p)
+        public Polygon(List<PointF> p, Color c, int w)
         {
             points = p;
+
+            color = c;
+            penWidth = w;
         }
 
         public void draw(System.Drawing.Graphics g, System.Drawing.Pen p)
@@ -34,7 +37,7 @@ namespace SketchPad.Models
 
         public Shape clone()
         {
-            Shape clone = new Free_Hand(points);
+            Shape clone = new Free_Hand(points, color, penWidth);
             return clone;
         }
     }
