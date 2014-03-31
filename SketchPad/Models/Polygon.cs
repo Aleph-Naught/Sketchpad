@@ -11,33 +11,42 @@ namespace SketchPad.Models
     {
         List<PointF> points;
    
-        public Polygon()
+        public Polygon(Color c, int w)
         {
             points = new List<PointF>();
+            color = c;
+            penWidth = w;
         }
 
         public Polygon(List<PointF> p, Color c, int w)
         {
             points = p;
-
             color = c;
             penWidth = w;
         }
 
         public void draw(System.Drawing.Graphics g, System.Drawing.Pen p)
         {
+            Pen i = new Pen(color, penWidth);
+
             if(points.Count > 1)
-                g.DrawCurve(p, points.ToArray());
+                g.DrawLines(i, points.ToArray());
         }
 
         public void set(int[] paramaters)
         {
-            points.Add(new Point(paramaters[2], paramaters[3]));
+            if(paramaters[0] == -1)
+            {
+                points.Add(points[0]);
+                return;
+            }
+
+            points.Add(new Point(paramaters[0], paramaters[1]));
         }
 
         public Shape clone()
         {
-            Shape clone = new Free_Hand(points, color, penWidth);
+            Shape clone = new Polygon(points, color, penWidth);
             return clone;
         }
     }

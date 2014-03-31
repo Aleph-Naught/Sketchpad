@@ -31,7 +31,7 @@ namespace SketchPad.Models
         {
             Pen i = new Pen(color, penWidth);
             if(points.Count > 1)
-                g.DrawCurve(p, points.ToArray());
+                g.DrawCurve(i, points.ToArray());
         }
 
         public void set(int[] paramaters)

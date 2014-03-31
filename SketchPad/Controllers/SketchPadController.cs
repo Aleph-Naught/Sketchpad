@@ -21,6 +21,15 @@ namespace SketchPad.Controllers
 
         private int init_x, init_y;
 
+        private bool poly = false;
+        private bool polyStart = true;
+
+        Bitmap bm;
+
+        Graphics g;
+
+        
+
         public SketchPadController(mainForm form)
         {
             _sketchpad = form;
@@ -29,6 +38,12 @@ namespace SketchPad.Controllers
             _current_shape = _sketchpad.canvas1.CreateGraphics();
 
             current_shape = new Line(Color.Black, 5);
+
+            bm = new Bitmap(_sketchpad.Width, _sketchpad.Height);
+
+            _sketchpad.canvas1.Image = bm;
+
+            g = Graphics.FromImage(_sketchpad.canvas1.Image);
 
         }
 
@@ -40,6 +55,14 @@ namespace SketchPad.Controllers
 
             
             String typeName = clickedBtn.Text;
+
+            if (typeName == "Polygon")
+            {
+                poly = true;
+                polyStart = true;
+            }
+            else
+                poly = false;
 
             typeName = typeName.Replace(' ', '_');
 
@@ -75,22 +98,91 @@ namespace SketchPad.Controllers
         public void mouseDown(object sender, MouseEventArgs e)
         {
 
-            var assembly = Assembly.GetExecutingAssembly();
+            if(e.Button == MouseButtons.Middle && poly)
+            {
+                enterPressed();
+                return;
+            }
 
-            var type = current_shape.GetType();
+            if(e.Button == MouseButtons.Right && poly)
+            {
+                current_shape.set(new int[] { e.X, e.Y });
 
-            current_shape = (Shape)Activator.CreateInstance(type, _state._selected_colour, 5);
+                Shape shape = current_shape.clone();
+                _state._isMouseDown = false;
+                _state.addShape(shape);
 
-            _state._isMouseDown = true;
-            init_x = e.X;
-            init_y = e.Y;
+                var assembly = Assembly.GetExecutingAssembly();
+
+                var type = current_shape.GetType();
+
+                current_shape = (Shape)Activator.CreateInstance(type, _state._selected_colour, 5);
+
+                polyStart = true;
+
+                return;
+            }
+
+
+            if (!poly)
+            {
+                var assembly = Assembly.GetExecutingAssembly();
+
+                var type = current_shape.GetType();
+
+                current_shape = (Shape)Activator.CreateInstance(type, _state._selected_colour, 5);
+
+                _state._isMouseDown = true;
+                init_x = e.X;
+                init_y = e.Y;
+            }
+            else
+            {
+                init_x = e.X;
+                init_y = e.Y;
+
+                polyStart = false;
+
+                current_shape.set(new int[]{e.X, e.Y});
+                current_shape.draw(g, _state.getPen());
+            }
+        }
+
+        public void enterPressed()
+        {
+            if(poly)
+            {
+                current_shape.set(new int[] { -1, -1 });
+
+                Shape shape = current_shape.clone();
+                _state._isMouseDown = false;
+                _state.addShape(shape);
+
+                current_shape.draw(g, _state.getPen());
+
+                var assembly = Assembly.GetExecutingAssembly();
+
+                var type = current_shape.GetType();
+
+                current_shape = (Shape)Activator.CreateInstance(type, _state._selected_colour, 5);
+
+                _sketchpad.canvas1.Refresh();
+
+                polyStart = true;
+
+                return;
+            }
+
         }
 
         public void mouseUp(object sender, MouseEventArgs e)
         {
-            Shape shape = current_shape.clone();
-            _state._isMouseDown = false;
-            _state.addShape(shape);
+            if (!poly)
+            {
+                Shape shape = current_shape.clone();
+                _state._isMouseDown = false;
+                _state.addShape(shape);
+            }
         }
 
         public void mouseMove(object sender, MouseEventArgs e)
@@ -99,44 +191,18 @@ namespace SketchPad.Controllers
             {
                 _sketchpad.canvas1.Refresh();
 
-                //_sketchpad.canvas1.Invalidate();
-
                 current_shape.set(new int[]{init_x, init_y, e.X, e.Y});
 
                 current_shape.draw(_sketchpad.canvas1.CreateGraphics(), _state.getPen());
             }
-        }
-
-        public void drawShape(int x1, int y1, int x2, int y2)
-        {
-            if (_state._selected_shape == "Free Hand")
-            {
-                
-            }
-            else if (_state._selected_shape == "Line")
-            {
-                _current_shape.DrawLine(_state.getPen(), x1, y1, x2, y2);
-            }
-            else if (_state._selected_shape == "Rectangle")
-            {
-                _current_shape = _sketchpad.canvas1.CreateGraphics();
-                _current_shape.DrawRectangle(_state.getPen(), x1, y1, x2-x1, y2-y1);
-            }
-            else if (_state._selected_shape == "Ellipse")
-            {
-                _current_shape = _sketchpad.canvas1.CreateGraphics();
-                _current_shape.DrawEllipse(_state.getPen(), x2, y2, x1 - x2, y2 - y1);
-            }
-            else if (_state._selected_shape == "Square")
+            else if(poly && !polyStart)
             {
 
-            }
-            else if (_state._selected_shape == "Circle")
-            {
+                _sketchpad.canvas1.Refresh();
 
-            }
-            else if (_state._selected_shape == "Polygon")
-            {
+                current_shape.draw(g, _state.getPen());
+
+               _sketchpad.canvas1.CreateGraphics().DrawLine(_state.getPen(), new Point(init_x, init_y), new Point(e.X, e.Y));
 
             }
         }
@@ -145,7 +211,7 @@ namespace SketchPad.Controllers
         {
             foreach(var graphic in _state.getShapes())
             {
-                graphic.draw(e.Graphics, _state.getPen());
+                graphic.draw(g, _state.getPen());
             }
 
         }

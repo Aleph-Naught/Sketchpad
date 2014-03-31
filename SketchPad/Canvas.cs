@@ -9,10 +9,11 @@ namespace SketchPad
 {
     public class Canvas : Panel
     {
-        public Canvas() {
-        this.DoubleBuffered = true;
-        this.ResizeRedraw = true;
-    }
+        public Canvas() 
+        {
+            this.DoubleBuffered = true;
+            this.ResizeRedraw = true;
+        }
 
     }
 }

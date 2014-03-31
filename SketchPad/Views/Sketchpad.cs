@@ -60,5 +60,18 @@ namespace SketchPad
             _controller.paint(sender, e);
         }
 
+        private void mainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+
+            }
+        }
+
+        private void canvas1_Click(object sender, EventArgs e)
+        {
+        }
+
+
     }
 }
