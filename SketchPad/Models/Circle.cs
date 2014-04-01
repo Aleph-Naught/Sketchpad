@@ -48,7 +48,8 @@ namespace SketchPad.Models
 
         public override void move(Point mouse)
         {
-            throw new NotImplementedException();
+            x = mouse.X;
+            y = mouse.Y;
         }
 
         override public void set(int[] paramaters)
@@ -73,7 +74,7 @@ namespace SketchPad.Models
         }
         public override Point getPos()
         {
-            throw new NotImplementedException();
+            return new Point(x, y);
         }
     }
 }
