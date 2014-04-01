@@ -15,8 +15,6 @@ namespace SketchPad.Controllers
         private static mainForm _sketchpad;
         private SketchPad.Models.SketchPadState _state;
 
-        private Graphics _current_shape;
-
         private Shape current_shape, currently_selected_shape;
 
         private int init_x, init_y, dx, dy;
@@ -38,8 +36,6 @@ namespace SketchPad.Controllers
         {
             _sketchpad = form;
             _state = new Models.SketchPadState();
-
-            _current_shape = _sketchpad.canvas1.CreateGraphics();
 
             current_shape = new Line(Color.Black, 5);
 
