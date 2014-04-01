@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\SketchPadController.cs" />
-    <Compile Include="Models\Brush.cs" />
     <Compile Include="Models\Circle.cs" />
     <Compile Include="Models\Ellipse.cs" />
     <Compile Include="Models\Free Hand.cs" />

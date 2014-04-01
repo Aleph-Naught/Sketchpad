@@ -236,18 +236,14 @@ namespace SketchPad.Controllers
         {
             for(int i = _state.getShapes().Count-1; i >= 0; i--)
             {
-                if (_state.getShapes()[i].GetType() == typeof(SketchPad.Models.Rectangle))
+                if (_state.getShapes()[i].clicked(new Point(e.X, e.Y)))
                 {
-                    if (_state.getShapes()[i].clicked(new Point(e.X, e.Y)))
-                    {
-                        _state.getShapes()[i].setColor(Color.Red);
-                        currently_selected_shape = _state.getShapes()[i];
-                        _sketchpad.canvas1.Refresh();
-                        _sketchpad.canvas1.Refresh();
-                        return;
-                    }
-                        
-                }
+                    _state.getShapes()[i].setColor(Color.Red);
+                    currently_selected_shape = _state.getShapes()[i];
+                    _sketchpad.canvas1.Refresh();
+                    _sketchpad.canvas1.Refresh();
+                    return;
+                }  
             }
         }
 

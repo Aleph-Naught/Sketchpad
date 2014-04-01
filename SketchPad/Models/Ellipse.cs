@@ -35,6 +35,8 @@ namespace SketchPad.Models
             height = _y;
             color = c;
             penWidth = w;
+
+            area = new System.Drawing.Rectangle(new Point(x, y), new Size(width, height));
         }
 
         override public void draw(Graphics g, System.Drawing.Pen p)
@@ -53,7 +55,10 @@ namespace SketchPad.Models
 
         override public bool clicked(Point p)
         {
-            return false;
+            if (area.Contains(p))
+                return true;
+            else
+                return false;
         }
 
         override public void setColor(Color c)

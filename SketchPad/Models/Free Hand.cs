@@ -11,6 +11,9 @@ namespace SketchPad.Models
     {
 
         List<PointF> points;
+
+        Point topLeft;
+        Point topRight;
    
 
         public Free_Hand(Color c, int w)

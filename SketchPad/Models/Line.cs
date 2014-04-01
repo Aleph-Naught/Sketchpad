@@ -11,6 +11,9 @@ namespace SketchPad.Models
     class Line : Shape
     {
 
+        double angle;
+        double distance;
+
         List<Point> points;
 
          override public Shape clone()
@@ -26,6 +29,18 @@ namespace SketchPad.Models
             points.Add(p2);
             color = c;
             penWidth = w;
+
+            double difx = p2.X - p1.X;
+
+            double dify = p2.Y - p1.Y;
+
+            distance = Math.Sqrt(Math.Pow(difx, 2) + Math.Pow(dify, 2));
+
+            angle = Math.Atan2(p2.Y - p1.Y, p2.X - p1.X) - Math.Atan2(0, distance); //Get angle
+
+            angle = angle * (180 / Math.PI) * -1; //convert to degrees and mulitply by negative one for some reason
+
+            area = new System.Drawing.Rectangle(points[0], new Size(Convert.ToInt32(distance), 9));
         }
 
         public Line(Color c, int w)
@@ -43,12 +58,15 @@ namespace SketchPad.Models
             points = new List<Point>();
             points.Add(new Point(init_x, init_y));
             points.Add(new Point(x, y));
+
         }
 
         override public void draw(Graphics g, Pen p)
         {
             Pen i = new Pen(color, penWidth);
             g.DrawLine(i, points[0], points[1]);
+
+            //g.DrawRectangle(i, area);
            
         }
 
@@ -60,12 +78,36 @@ namespace SketchPad.Models
 
         override public bool clicked(Point p)
         {
-            return false;
+            Point rotatedPoint = RotatePoint(p, points[0], angle);
+
+            if(area.Contains(rotatedPoint))
+                return true;
+            else
+                return false;
         }
 
         override public void setColor(Color c)
         {
             color = c;
         }
+
+        Point RotatePoint(Point pointToRotate, Point centerPoint, double angleInDegrees)
+        {
+            double angleInRadians = angleInDegrees * (Math.PI / 180);
+            double cosTheta = Math.Cos(angleInRadians);
+            double sinTheta = Math.Sin(angleInRadians);
+            return new Point
+            {
+                X =
+                    (int)
+                    (cosTheta * (pointToRotate.X - centerPoint.X) -
+                    sinTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.X),
+                Y =
+                    (int)
+                    (sinTheta * (pointToRotate.X - centerPoint.X) +
+                    cosTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.Y)
+            };
+        }
+
     }
 }

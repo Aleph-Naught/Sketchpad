@@ -12,7 +12,9 @@ namespace SketchPad.Models
     {
         public Color color = Color.Black;
 
-        public int penWidth = 5; 
+        public int penWidth = 5;
+
+        public System.Drawing.Rectangle area;
 
         public abstract void draw(Graphics g, Pen p);
 

@@ -15,8 +15,6 @@ namespace SketchPad.Models
         int width;
         int height;
 
-        System.Drawing.Rectangle area;
-
         override public Shape clone()
         {
             Shape clone = new Rectangle(x, y, width, height, color, penWidth);

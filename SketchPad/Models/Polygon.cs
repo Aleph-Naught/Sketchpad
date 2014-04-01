@@ -10,12 +10,16 @@ namespace SketchPad.Models
     class Polygon : Shape
     {
         List<PointF> points;
+
+        int num = 0;
    
         public Polygon(Color c, int w)
         {
             points = new List<PointF>();
             color = c;
             penWidth = w;
+            topLeft = new Point(0, 0);
+            bottomRight = new Point(0, 0);
         }
 
         public Polygon(List<PointF> p, Color c, int w)
@@ -40,8 +44,6 @@ namespace SketchPad.Models
                 points.Add(points[0]);
                 return;
             }
-
-            points.Add(new Point(paramaters[0], paramaters[1]));
         }
 
         override public Shape clone()
