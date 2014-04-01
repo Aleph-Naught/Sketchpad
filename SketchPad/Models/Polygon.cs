@@ -38,7 +38,7 @@ namespace SketchPad.Models
                 {
                     xMin = points[i].X;
                     xMax = xMin;
-                    yMin = points[i].X;
+                    yMin = points[i].Y;
                     yMax = yMin;
                 }
                 else
