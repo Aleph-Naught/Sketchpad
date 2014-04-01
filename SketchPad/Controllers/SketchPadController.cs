@@ -110,8 +110,8 @@ namespace SketchPad.Controllers
                 selectClick(e);
                 if (currently_selected_shape != null) { 
                 refPoint = currently_selected_shape.getPos();
-                int dx = refPoint.X - e.X,
-                    dy = refPoint.Y - e.Y;
+                dx = refPoint.X - e.X;
+                dy = refPoint.Y - e.Y;
             }
                 
                 return;
