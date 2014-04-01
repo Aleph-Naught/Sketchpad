@@ -28,6 +28,36 @@ namespace SketchPad.Models
             points = p;
             color = c;
             penWidth = w;
+            calculateArea();
+        }
+        public void calculateArea()
+        {
+            float xMin = 0;
+            float xMax = 0;
+            float yMin = 0;
+            float yMax = 0;
+            for (int i = 0; i < points.Count; i++)
+            {
+                if (i == 0)
+                {
+                    xMin = points[i].X;
+                    xMax = xMin;
+                    yMin = points[i].Y;
+                    yMax = yMin;
+                }
+                else
+                {
+                    if (points[i].X < xMin)
+                        xMin = points[i].X;
+                    if (points[i].X > xMax)
+                        xMax = points[i].X;
+                    if (points[i].Y < yMin)
+                        yMin = points[i].Y;
+                    if (points[i].Y > yMax)
+                        yMax = points[i].Y;
+                }
+            }
+            area = new System.Drawing.Rectangle((int)xMin, (int)yMin, (int)(xMax - xMin), (int)(yMax - yMin));
         }
 
         override public void draw(System.Drawing.Graphics g, System.Drawing.Pen p)
@@ -50,7 +80,10 @@ namespace SketchPad.Models
 
         override public bool clicked(Point p)
         {
-            return false;
+            if (area.Contains(p))
+                return true;
+            else
+                return false;
         }
 
         override public void setColor(Color c)
