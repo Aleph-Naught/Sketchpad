@@ -17,7 +17,7 @@ namespace SketchPad.Controllers
 
         private Graphics _current_shape;
 
-        private Shape current_shape;
+        private Shape current_shape, currently_selected_shape;
 
         private int init_x, init_y;
 
@@ -241,6 +241,7 @@ namespace SketchPad.Controllers
                     if (_state.getShapes()[i].clicked(new Point(e.X, e.Y)))
                     {
                         _state.getShapes()[i].setColor(Color.Red);
+                        currently_selected_shape = _state.getShapes()[i];
                         _sketchpad.canvas1.Refresh();
                         _sketchpad.canvas1.Refresh();
                         return;
