@@ -20,7 +20,7 @@ namespace SketchPad.Models
 
         public Polygon(List<PointF> p, Color c, int w)
         {
-            points = p;
+            points = new List<PointF>(p);
             color = c;
             penWidth = w;
             calculateArea();
