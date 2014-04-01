@@ -37,13 +37,13 @@
             this.clearBtn = new System.Windows.Forms.Button();
             this.colourBtn = new System.Windows.Forms.Button();
             this.shapeGroupBox = new System.Windows.Forms.GroupBox();
-            this.freeHandBtn = new System.Windows.Forms.Button();
-            this.polygonBtn = new System.Windows.Forms.Button();
-            this.lineBtn = new System.Windows.Forms.Button();
-            this.circleBtn = new System.Windows.Forms.Button();
-            this.rectangleButton = new System.Windows.Forms.Button();
-            this.squareBtn = new System.Windows.Forms.Button();
-            this.ellipseBtn = new System.Windows.Forms.Button();
+            this.freeHandBtn = new System.Windows.Forms.RadioButton();
+            this.polygonBtn = new System.Windows.Forms.RadioButton();
+            this.lineBtn = new System.Windows.Forms.RadioButton();
+            this.circleBtn = new System.Windows.Forms.RadioButton();
+            this.rectangleButton = new System.Windows.Forms.RadioButton();
+            this.squareBtn = new System.Windows.Forms.RadioButton();
+            this.ellipseBtn = new System.Windows.Forms.RadioButton();
             this.canvas1 = new System.Windows.Forms.PictureBox();
             this.colourDialog = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -177,6 +177,7 @@
             // 
             // freeHandBtn
             // 
+            this.freeHandBtn.Appearance = System.Windows.Forms.Appearance.Button;
             this.freeHandBtn.Location = new System.Drawing.Point(18, 19);
             this.freeHandBtn.Name = "freeHandBtn";
             this.freeHandBtn.Size = new System.Drawing.Size(75, 23);
@@ -187,6 +188,7 @@
             // 
             // polygonBtn
             // 
+            this.polygonBtn.Appearance = System.Windows.Forms.Appearance.Button;
             this.polygonBtn.Location = new System.Drawing.Point(18, 193);
             this.polygonBtn.Name = "polygonBtn";
             this.polygonBtn.Size = new System.Drawing.Size(75, 23);
@@ -197,6 +199,7 @@
             // 
             // lineBtn
             // 
+            this.lineBtn.Appearance = System.Windows.Forms.Appearance.Button;
             this.lineBtn.Location = new System.Drawing.Point(18, 48);
             this.lineBtn.Name = "lineBtn";
             this.lineBtn.Size = new System.Drawing.Size(75, 23);
@@ -207,6 +210,7 @@
             // 
             // circleBtn
             // 
+            this.circleBtn.Appearance = System.Windows.Forms.Appearance.Button;
             this.circleBtn.Location = new System.Drawing.Point(18, 164);
             this.circleBtn.Name = "circleBtn";
             this.circleBtn.Size = new System.Drawing.Size(75, 23);
@@ -217,6 +221,7 @@
             // 
             // rectangleButton
             // 
+            this.rectangleButton.Appearance = System.Windows.Forms.Appearance.Button;
             this.rectangleButton.Location = new System.Drawing.Point(18, 77);
             this.rectangleButton.Name = "rectangleButton";
             this.rectangleButton.Size = new System.Drawing.Size(75, 23);
@@ -227,6 +232,7 @@
             // 
             // squareBtn
             // 
+            this.squareBtn.Appearance = System.Windows.Forms.Appearance.Button;
             this.squareBtn.Location = new System.Drawing.Point(18, 135);
             this.squareBtn.Name = "squareBtn";
             this.squareBtn.Size = new System.Drawing.Size(75, 23);
@@ -237,6 +243,7 @@
             // 
             // ellipseBtn
             // 
+            this.ellipseBtn.Appearance = System.Windows.Forms.Appearance.Button;
             this.ellipseBtn.Location = new System.Drawing.Point(18, 106);
             this.ellipseBtn.Name = "ellipseBtn";
             this.ellipseBtn.Size = new System.Drawing.Size(75, 23);
@@ -286,13 +293,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button polygonBtn;
-        private System.Windows.Forms.Button circleBtn;
-        private System.Windows.Forms.Button squareBtn;
-        private System.Windows.Forms.Button ellipseBtn;
-        private System.Windows.Forms.Button rectangleButton;
-        private System.Windows.Forms.Button lineBtn;
-        private System.Windows.Forms.Button freeHandBtn;
+        private System.Windows.Forms.RadioButton polygonBtn;
+        private System.Windows.Forms.RadioButton circleBtn;
+        private System.Windows.Forms.RadioButton squareBtn;
+        private System.Windows.Forms.RadioButton ellipseBtn;
+        private System.Windows.Forms.RadioButton rectangleButton;
+        private System.Windows.Forms.RadioButton lineBtn;
+        private System.Windows.Forms.RadioButton freeHandBtn;
         private System.Windows.Forms.ColorDialog colourDialog;
         private System.Windows.Forms.Button colourBtn;
         private System.Windows.Forms.GroupBox shapeGroupBox;

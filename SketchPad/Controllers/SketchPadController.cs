@@ -53,7 +53,7 @@ namespace SketchPad.Controllers
 
         public void shapeBtn_Click(object sender, EventArgs e)
         {
-            Button clickedBtn = (Button)sender;
+            RadioButton clickedBtn = (RadioButton)sender;
 
             _state._selected_shape = clickedBtn.Text;
             
