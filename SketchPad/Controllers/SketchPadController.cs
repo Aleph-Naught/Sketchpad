@@ -239,7 +239,8 @@ namespace SketchPad.Controllers
                     {
                         _state.getShapes()[i].draw(_sketchpad.canvas1.CreateGraphics(), new Pen(_state.getShapes()[i].color));
                     }
-                    currently_selected_shape.move(new Point(e.X, e.Y));
+                    Point tmp = currently_selected_shape.getPos();
+                    currently_selected_shape.move(new Point(tmp.X+e.X, tmp.Y+e.Y));
                     currently_selected_shape.draw(_sketchpad.canvas1.CreateGraphics(), _state.getPen());
                     move_initiated = true;
                 }

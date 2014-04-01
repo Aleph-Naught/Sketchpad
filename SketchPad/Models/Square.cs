@@ -71,5 +71,10 @@ namespace SketchPad.Models
             this.x = mouse.X;
             this.y = mouse.Y;
         }
+
+        public override Point getPos()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -25,6 +25,8 @@ namespace SketchPad.Models
         public abstract bool clicked(Point p);
 
         public abstract void setColor(Color color);
+
+        public abstract Point getPos();
         
     }
 }

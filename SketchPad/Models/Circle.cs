@@ -66,5 +66,9 @@ namespace SketchPad.Models
         {
             color = c;
         }
+        public override Point getPos()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
