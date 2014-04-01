@@ -10,16 +10,12 @@ namespace SketchPad.Models
     class Polygon : Shape
     {
         List<PointF> points;
-
-        int num = 0;
    
         public Polygon(Color c, int w)
         {
             points = new List<PointF>();
             color = c;
             penWidth = w;
-            topLeft = new Point(0, 0);
-            bottomRight = new Point(0, 0);
         }
 
         public Polygon(List<PointF> p, Color c, int w)
