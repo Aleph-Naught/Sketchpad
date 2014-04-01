@@ -234,15 +234,16 @@ namespace SketchPad.Controllers
 
         public void selectClick(MouseEventArgs e)
         {
-            foreach(var graphic in _state.getShapes())
+            for(int i = _state.getShapes().Count-1; i >= 0; i--)
             {
-                if(graphic.GetType() == typeof(SketchPad.Models.Rectangle))
+                if (_state.getShapes()[i].GetType() == typeof(SketchPad.Models.Rectangle))
                 {
-                    if (graphic.clicked(new Point(e.X, e.Y)))
+                    if (_state.getShapes()[i].clicked(new Point(e.X, e.Y)))
                     {
-                        graphic.setColor(Color.Red);
+                        _state.getShapes()[i].setColor(Color.Red);
                         _sketchpad.canvas1.Refresh();
                         _sketchpad.canvas1.Refresh();
+                        return;
                     }
                         
                 }
