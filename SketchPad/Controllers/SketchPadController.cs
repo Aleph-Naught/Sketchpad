@@ -28,6 +28,8 @@ namespace SketchPad.Controllers
         private bool selecting = false;
         private bool move_initiated = false;
 
+        bool deleteFlag = false;
+
         Bitmap bm;
 
         Graphics g;
@@ -216,8 +218,7 @@ namespace SketchPad.Controllers
                 Shape shape = current_shape.clone();
                 _state.addShape(shape);
             }
-
-            else if(move_initiated && selecting)
+            else if(move_initiated && selecting && !deleteFlag)
             {
                 try
                 {
@@ -234,14 +235,20 @@ namespace SketchPad.Controllers
 
                 }
             }
+            else
+            {
+                deleteFlag = false;
+            }
         }
 
         public void mouseMove(object sender, MouseEventArgs e)
         {
+
+
             if (_state._isMouseDown && selecting)
             {
                 try
-                {
+                {                 
                     _state.removeShape(currently_selected_shape);
                     _sketchpad.canvas1.Invalidate();
                     g.Clear(Color.White);
@@ -338,6 +345,18 @@ namespace SketchPad.Controllers
             else
             {
                 _sketchpad.Cursor = Cursors.Default;
+            }
+        }
+
+        public void delete()
+        {
+            if(selecting && current_shape!=null)
+            {
+
+                deleteFlag = true;
+                currently_selected_shape = null;
+                _sketchpad.canvas1.Refresh();
+
             }
         }
     }

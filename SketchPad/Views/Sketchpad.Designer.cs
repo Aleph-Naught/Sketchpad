@@ -277,6 +277,7 @@
             this.Text = "SketchPad";
             this.ResizeEnd += new System.EventHandler(this.mainForm_ResizeEnd);
             this.SizeChanged += new System.EventHandler(this.mainForm_ResizeEnd);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mainForm_KeyDown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();

@@ -82,6 +82,12 @@ namespace SketchPad
             _controller.reSize();
         }
 
+        private void mainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+                _controller.delete();
+        }
+
 
     }
 
