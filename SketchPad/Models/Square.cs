@@ -76,7 +76,7 @@ namespace SketchPad.Models
 
         public override Point getPos()
         {
-            throw new NotImplementedException();
+            return new Point(x, y);
         }
     }
 }
