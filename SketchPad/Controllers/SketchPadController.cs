@@ -102,6 +102,7 @@ namespace SketchPad.Controllers
             if(selecting)
             {
                 selectClick(e);
+                currently_selected_shape.move(new Point(e.X, e.Y));
                 return;
             }
 
@@ -203,7 +204,12 @@ namespace SketchPad.Controllers
 
         public void mouseMove(object sender, MouseEventArgs e)
         {
-            if (_state._isMouseDown)
+            if (_state._isMouseDown && selecting)
+            {
+                _state.removeShape(currently_selected_shape);
+            }
+
+            else if (_state._isMouseDown && !selecting)
             {
                 _sketchpad.canvas1.Refresh();
 
