@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SketchPad.Models
 {
-    class Rectangle : Brush, Shape
+    class Rectangle : Shape
     {
 
         int x;
@@ -17,7 +17,7 @@ namespace SketchPad.Models
 
         System.Drawing.Rectangle area;
 
-        public Shape clone()
+        override public Shape clone()
         {
             Shape clone = new Rectangle(x, y, width, height, color, penWidth);
             return clone;
@@ -43,13 +43,13 @@ namespace SketchPad.Models
             area = new System.Drawing.Rectangle(new Point(x, y), new Size(width, height));
         }
 
-        public void draw(Graphics g, System.Drawing.Pen p)
+        override public void draw(Graphics g, System.Drawing.Pen p)
         {
             Pen i = new Pen(color, penWidth);
             g.DrawRectangle(i, new System.Drawing.Rectangle(x, y, width, height));
         }
 
-        public void set(int[] paramaters)
+        override public void set(int[] paramaters)
         {
             x = paramaters[0];
             y = paramaters[1];
@@ -57,7 +57,7 @@ namespace SketchPad.Models
             height = paramaters[3] - y;
         }
 
-        public bool clicked(Point p)
+        override public bool clicked(Point p)
         {
             if (area.Contains(p))
                 return true;
@@ -65,7 +65,7 @@ namespace SketchPad.Models
                 return false;
         }
 
-        public void setColor(Color c)
+        override public void setColor(Color c)
         {
             color = c;
         }

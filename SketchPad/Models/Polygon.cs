@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SketchPad.Models
 {
-    class Polygon : Brush, Shape
+    class Polygon : Shape
     {
         List<PointF> points;
    
@@ -25,7 +25,7 @@ namespace SketchPad.Models
             penWidth = w;
         }
 
-        public void draw(System.Drawing.Graphics g, System.Drawing.Pen p)
+        override public void draw(System.Drawing.Graphics g, System.Drawing.Pen p)
         {
             Pen i = new Pen(color, penWidth);
 
@@ -33,7 +33,7 @@ namespace SketchPad.Models
                 g.DrawLines(i, points.ToArray());
         }
 
-        public void set(int[] paramaters)
+        override public void set(int[] paramaters)
         {
             if(paramaters[0] == -1)
             {
@@ -44,18 +44,18 @@ namespace SketchPad.Models
             points.Add(new Point(paramaters[0], paramaters[1]));
         }
 
-        public Shape clone()
+        override public Shape clone()
         {
             Shape clone = new Polygon(points, color, penWidth);
             return clone;
         }
 
-        public bool clicked(Point p)
+        override public bool clicked(Point p)
         {
             return false;
         }
 
-        public void setColor(Color c)
+         override public void setColor(Color c)
         {
             color = c;
         }

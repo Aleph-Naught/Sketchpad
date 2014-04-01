@@ -8,18 +8,21 @@ using System.Windows.Forms;
 
 namespace SketchPad.Models
 {
-    interface Shape
+    abstract class Shape
     {
+        public Color color = Color.Black;
 
-        void draw(Graphics g, Pen p);
+        public int penWidth = 5; 
 
-        void set(int[] paramaters);
+        public abstract void draw(Graphics g, Pen p);
 
-        Shape clone();
+        public abstract void set(int[] paramaters);
 
-        bool clicked(Point p);
+        public abstract Shape clone();
 
-        void setColor(Color color);
+        public abstract bool clicked(Point p);
+
+        public abstract void setColor(Color color);
         
     }
 }

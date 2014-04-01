@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace SketchPad.Models
 {
-    class Line : Brush, Shape
+    class Line : Shape
     {
 
         List<Point> points;
 
-        public Shape clone()
+         override public Shape clone()
         {
             Shape clone = new Line(points[0], points[1], color, penWidth);
             return clone;
@@ -45,25 +45,25 @@ namespace SketchPad.Models
             points.Add(new Point(x, y));
         }
 
-        public void draw(Graphics g, Pen p)
+        override public void draw(Graphics g, Pen p)
         {
             Pen i = new Pen(color, penWidth);
             g.DrawLine(i, points[0], points[1]);
            
         }
 
-        public void set(int[] paramaters)
+        override public void set(int[] paramaters)
         {
             points[0] = new Point(paramaters[0], paramaters[1]);
             points[1] = new Point(paramaters[2], paramaters[3]);
         }
 
-        public bool clicked(Point p)
+        override public bool clicked(Point p)
         {
             return false;
         }
 
-        public void setColor(Color c)
+        override public void setColor(Color c)
         {
             color = c;
         }

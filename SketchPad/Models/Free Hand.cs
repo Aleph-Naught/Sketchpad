@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SketchPad.Models
 {
-    class Free_Hand : Brush, Shape
+    class Free_Hand : Shape
     {
 
         List<PointF> points;
@@ -27,30 +27,30 @@ namespace SketchPad.Models
             penWidth = w;
         }
 
-        public void draw(System.Drawing.Graphics g, System.Drawing.Pen p)
+        override public void draw(System.Drawing.Graphics g, System.Drawing.Pen p)
         {
             Pen i = new Pen(color, penWidth);
             if(points.Count > 1)
                 g.DrawCurve(i, points.ToArray());
         }
 
-        public void set(int[] paramaters)
+        override public void set(int[] paramaters)
         {
             points.Add(new Point(paramaters[2], paramaters[3]));
         }
 
-        public Shape clone()
+        override public Shape clone()
         {
             Shape clone = new Free_Hand(points, color, penWidth);
             return clone;
         }
 
-        public bool clicked(Point p)
+        override public bool clicked(Point p)
         {
             return false;
         }
 
-        public void setColor(Color c)
+        override public void setColor(Color c)
         {
             color = c;
         }
