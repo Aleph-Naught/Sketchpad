@@ -52,11 +52,11 @@ namespace SketchPad.Models
             y = mouse.Y;
         }
 
-        override public void set(int[] paramaters)
+        override public void set(int[] parameters)
         {
-            x = paramaters[0];
-            y = paramaters[1];
-            width = paramaters[2] - x;
+            x = parameters[0];
+            y = parameters[1];
+            width = parameters[2] - x;
             height = width;
         }
 

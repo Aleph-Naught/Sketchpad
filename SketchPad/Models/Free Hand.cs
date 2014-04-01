@@ -64,9 +64,9 @@ namespace SketchPad.Models
                 g.DrawCurve(i, points.ToArray());
         }
 
-        override public void set(int[] paramaters)
+        override public void set(int[] parameters)
         {
-            points.Add(new Point(paramaters[2], paramaters[3]));
+            points.Add(new Point(parameters[2], parameters[3]));
         }
 
         override public Shape clone()

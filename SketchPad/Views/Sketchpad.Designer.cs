@@ -175,10 +175,12 @@
             // lineBtn
             // 
             this.lineBtn.Appearance = System.Windows.Forms.Appearance.Button;
+            this.lineBtn.Checked = true;
             this.lineBtn.Location = new System.Drawing.Point(18, 48);
             this.lineBtn.Name = "lineBtn";
             this.lineBtn.Size = new System.Drawing.Size(75, 23);
             this.lineBtn.TabIndex = 1;
+            this.lineBtn.TabStop = true;
             this.lineBtn.Text = "Line";
             this.lineBtn.UseVisualStyleBackColor = true;
             this.lineBtn.Click += new System.EventHandler(this.shapeBtn_Click);

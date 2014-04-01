@@ -70,10 +70,10 @@ namespace SketchPad.Models
            
         }
 
-        override public void set(int[] paramaters)
+        override public void set(int[] parameters)
         {
-            points[0] = new Point(paramaters[0], paramaters[1]);
-            points[1] = new Point(paramaters[2], paramaters[3]);
+            points[0] = new Point(parameters[0], parameters[1]);
+            points[1] = new Point(parameters[2], parameters[3]);
         }
 
         override public bool clicked(Point p)
