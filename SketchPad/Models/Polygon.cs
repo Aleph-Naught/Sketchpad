@@ -102,7 +102,7 @@ namespace SketchPad.Models
 
              for (int i = 0; i < points.Count;i++ )
              {
-                 points[i] = new PointF(this.points[i].X + dx, this.points[i].Y + dy);
+                 points[i] = new PointF(this.points[i].X - dx, this.points[i].Y - dy);
              }
 
          }
