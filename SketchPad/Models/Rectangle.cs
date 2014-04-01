@@ -23,12 +23,6 @@ namespace SketchPad.Models
             return clone;
         }
 
-        public override void move(Point mouse)
-        {
-            this.x = mouse.X;
-            this.y = mouse.Y;
-        }
-
         public Rectangle(Color c, int w)
         {
             x = y = width = height = 0;
@@ -74,6 +68,11 @@ namespace SketchPad.Models
         override public void setColor(Color c)
         {
             color = c;
+        }
+        public override void move(Point mouse)
+        {
+            this.x = mouse.X;
+            this.y = mouse.Y;
         }
     }
 }
