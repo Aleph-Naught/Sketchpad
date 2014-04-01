@@ -11,9 +11,6 @@ namespace SketchPad.Models
     {
 
         List<PointF> points;
-
-        Point topLeft;
-        Point topRight;
    
 
         public Free_Hand(Color c, int w)
@@ -25,7 +22,7 @@ namespace SketchPad.Models
 
         public Free_Hand(List<PointF> p, Color c, int w)
         {
-            points = p;
+            points = new List<PointF>(p);
             color = c;
             penWidth = w;
             calculateArea();
