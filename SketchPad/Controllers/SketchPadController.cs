@@ -28,8 +28,6 @@ namespace SketchPad.Controllers
 
         Graphics g;
 
-        
-
         public SketchPadController(mainForm form)
         {
             _sketchpad = form;
@@ -97,6 +95,15 @@ namespace SketchPad.Controllers
 
         public void mouseDown(object sender, MouseEventArgs e)
         {
+
+            if(polyStart)
+            {
+                var assembly = Assembly.GetExecutingAssembly();
+
+                var type = current_shape.GetType();
+
+                current_shape = (Shape)Activator.CreateInstance(type, _state._selected_colour, 5);
+            }
 
             if(e.Button == MouseButtons.Middle && poly)
             {

@@ -183,7 +183,6 @@
             this.canvas1.Size = new System.Drawing.Size(639, 495);
             this.canvas1.TabIndex = 0;
             this.canvas1.TabStop = false;
-            this.canvas1.Click += new System.EventHandler(this.canvas1_Click);
             this.canvas1.Paint += new System.Windows.Forms.PaintEventHandler(this.canvas1_Paint);
             this.canvas1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseDown);
             this.canvas1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseMove);
@@ -204,7 +203,6 @@
             this.KeyPreview = true;
             this.Name = "mainForm";
             this.Text = "SketchPad";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mainForm_KeyDown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

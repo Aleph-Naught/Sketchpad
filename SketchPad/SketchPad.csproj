@@ -44,9 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Canvas.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Controllers\SketchPadController.cs" />
     <Compile Include="Models\Brush.cs" />
     <Compile Include="Models\Circle.cs" />
