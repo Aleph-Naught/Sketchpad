@@ -207,6 +207,7 @@ namespace SketchPad.Controllers
             if (_state._isMouseDown && selecting)
             {
                 _state.removeShape(currently_selected_shape);
+                _sketchpad.canvas1.Refresh();
             }
 
             else if (_state._isMouseDown && !selecting)

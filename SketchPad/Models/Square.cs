@@ -66,5 +66,10 @@ namespace SketchPad.Models
         {
             color = c;
         }
+        public override void move(Point mouse)
+        {
+            this.x = mouse.X;
+            this.y = mouse.Y;
+        }
     }
 }
