@@ -44,6 +44,11 @@ namespace SketchPad.Models
             g.DrawEllipse(i, new System.Drawing.Rectangle(x, y, width, height));
         }
 
+        public override void move(Point mouse)
+        {
+            throw new NotImplementedException();
+        }
+
         override public void set(int[] paramaters)
         {
             x = paramaters[0];
