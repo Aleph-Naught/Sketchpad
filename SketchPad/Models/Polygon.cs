@@ -97,10 +97,18 @@ namespace SketchPad.Models
 
          public override void move(Point mouse)
          {
+             float dx = points[0].X - mouse.X,
+                   dy = points[0].Y - mouse.Y;
+
+             for (int i = 0; i < points.Count;i++ )
+             {
+                 points[i] = new PointF(this.points[i].X - dx, this.points[i].Y - dy);
+             }
+
          }
          public override Point getPos()
          {
-             throw new NotImplementedException();
+             return new Point((int)points[0].X, (int)points[0].Y);
          }
 
     }
