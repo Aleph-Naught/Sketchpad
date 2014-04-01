@@ -15,6 +15,8 @@ namespace SketchPad.Models
         int width;
         int height;
 
+        System.Drawing.Rectangle area;
+
         public Shape clone()
         {
             Shape clone = new Rectangle(x, y, width, height, color, penWidth);
@@ -37,6 +39,8 @@ namespace SketchPad.Models
 
             color = c;
             penWidth = w;
+
+            area = new System.Drawing.Rectangle(new Point(x, y), new Size(width, height));
         }
 
         public void draw(Graphics g, System.Drawing.Pen p)
@@ -51,6 +55,19 @@ namespace SketchPad.Models
             y = paramaters[1];
             width = paramaters[2] - x;
             height = paramaters[3] - y;
+        }
+
+        public bool clicked(Point p)
+        {
+            if (area.Contains(p))
+                return true;
+            else
+                return false;
+        }
+
+        public void setColor(Color c)
+        {
+            color = c;
         }
     }
 }

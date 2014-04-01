@@ -41,6 +41,7 @@
             this.ellipseBtn = new System.Windows.Forms.Button();
             this.canvas1 = new System.Windows.Forms.PictureBox();
             this.colourDialog = new System.Windows.Forms.ColorDialog();
+            this.selectBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -57,6 +58,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.selectBtn);
             this.splitContainer1.Panel1.Controls.Add(this.clearBtn);
             this.splitContainer1.Panel1.Controls.Add(this.colourBtn);
             this.splitContainer1.Panel1.Controls.Add(this.shapeGroupBox);
@@ -193,6 +195,16 @@
             this.colourDialog.AllowFullOpen = false;
             this.colourDialog.SolidColorOnly = true;
             // 
+            // selectBtn
+            // 
+            this.selectBtn.Location = new System.Drawing.Point(21, 329);
+            this.selectBtn.Name = "selectBtn";
+            this.selectBtn.Size = new System.Drawing.Size(75, 23);
+            this.selectBtn.TabIndex = 10;
+            this.selectBtn.Text = "Select";
+            this.selectBtn.UseVisualStyleBackColor = true;
+            this.selectBtn.Click += new System.EventHandler(this.selectBtn_Click);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -228,6 +240,7 @@
         private System.Windows.Forms.Button clearBtn;
         public System.Windows.Forms.SplitContainer splitContainer1;
         public System.Windows.Forms.PictureBox canvas1;
+        private System.Windows.Forms.Button selectBtn;
     }
 }
 

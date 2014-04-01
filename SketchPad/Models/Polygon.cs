@@ -49,5 +49,15 @@ namespace SketchPad.Models
             Shape clone = new Polygon(points, color, penWidth);
             return clone;
         }
+
+        public bool clicked(Point p)
+        {
+            return false;
+        }
+
+        public void setColor(Color c)
+        {
+            color = c;
+        }
     }
 }

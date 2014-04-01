@@ -57,5 +57,15 @@ namespace SketchPad.Models
             points[0] = new Point(paramaters[0], paramaters[1]);
             points[1] = new Point(paramaters[2], paramaters[3]);
         }
+
+        public bool clicked(Point p)
+        {
+            return false;
+        }
+
+        public void setColor(Color c)
+        {
+            color = c;
+        }
     }
 }

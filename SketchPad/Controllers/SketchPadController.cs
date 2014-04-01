@@ -24,6 +24,8 @@ namespace SketchPad.Controllers
         private bool poly = false;
         private bool polyStart = true;
 
+        private bool selecting = false;
+
         Bitmap bm;
 
         Graphics g;
@@ -95,6 +97,12 @@ namespace SketchPad.Controllers
 
         public void mouseDown(object sender, MouseEventArgs e)
         {
+
+            if(selecting)
+            {
+                selectClick(e);
+                return;
+            }
 
             if(polyStart)
             {
@@ -184,7 +192,7 @@ namespace SketchPad.Controllers
 
         public void mouseUp(object sender, MouseEventArgs e)
         {
-            if (!poly)
+            if (!poly && !selecting)
             {
                 Shape shape = current_shape.clone();
                 _state._isMouseDown = false;
@@ -221,6 +229,28 @@ namespace SketchPad.Controllers
                 graphic.draw(g, _state.getPen());
             }
 
+        }
+
+        public void selectClick(MouseEventArgs e)
+        {
+            foreach(var graphic in _state.getShapes())
+            {
+                if(graphic.GetType() == typeof(SketchPad.Models.Rectangle))
+                {
+                    if (graphic.clicked(new Point(e.X, e.Y)))
+                    {
+                        graphic.setColor(Color.Red);
+                        _sketchpad.canvas1.Refresh();
+                        _sketchpad.canvas1.Refresh();
+                    }
+                        
+                }
+            }
+        }
+
+        public void selectBtn()
+        {
+            selecting = !selecting;
         }
     }
 }

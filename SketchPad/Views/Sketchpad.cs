@@ -60,5 +60,10 @@ namespace SketchPad
             _controller.paint(sender, e);
         }
 
+        private void selectBtn_Click(object sender, EventArgs e)
+        {
+            _controller.selectBtn();
+        }
+
     }
 }

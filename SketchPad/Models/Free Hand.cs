@@ -44,5 +44,15 @@ namespace SketchPad.Models
             Shape clone = new Free_Hand(points, color, penWidth);
             return clone;
         }
+
+        public bool clicked(Point p)
+        {
+            return false;
+        }
+
+        public void setColor(Color c)
+        {
+            color = c;
+        }
     }
 }

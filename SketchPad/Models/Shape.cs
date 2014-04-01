@@ -16,6 +16,10 @@ namespace SketchPad.Models
         void set(int[] paramaters);
 
         Shape clone();
+
+        bool clicked(Point p);
+
+        void setColor(Color color);
         
     }
 }

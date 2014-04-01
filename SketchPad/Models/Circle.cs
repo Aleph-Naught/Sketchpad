@@ -51,5 +51,15 @@ namespace SketchPad.Models
             width = paramaters[2] - x;
             height = width;
         }
+
+        public bool clicked(Point p)
+        {
+            return false;
+        }
+
+        public void setColor(Color c)
+        {
+            color = c;
+        }
     }
 }
