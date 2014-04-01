@@ -47,12 +47,12 @@ namespace SketchPad.Models
             g.DrawRectangle(i, new System.Drawing.Rectangle(x, y, width, height));
         }
 
-        override public void set(int[] paramaters)
+        override public void set(int[] parameters)
         {
-            x = paramaters[0];
-            y = paramaters[1];
-            width = paramaters[2] - x;
-            height = paramaters[3] - y;
+            x = parameters[0];
+            y = parameters[1];
+            width = parameters[2] - x;
+            height = parameters[3] - y;
         }
 
         override public bool clicked(Point p)

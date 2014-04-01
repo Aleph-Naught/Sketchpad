@@ -64,15 +64,15 @@ namespace SketchPad.Models
                 g.DrawLines(i, points.ToArray());
         }
 
-        override public void set(int[] paramaters)
+        override public void set(int[] parameters)
         {
-            if(paramaters[0] == -1)
+            if(parameters[0] == -1)
             {
                 points.Add(points[0]);
                 return;
             }
 
-            points.Add(new Point(paramaters[0], paramaters[1]));
+            points.Add(new Point(parameters[0], parameters[1]));
         }
 
         override public Shape clone()

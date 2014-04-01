@@ -18,7 +18,7 @@ namespace SketchPad.Models
 
         public abstract void draw(Graphics g, Pen p);
 
-        public abstract void set(int[] paramaters);
+        public abstract void set(int[] parameters);
 
         public abstract void move(Point mouse);
 
