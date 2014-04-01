@@ -97,9 +97,12 @@ namespace SketchPad.Models
 
          public override void move(Point mouse)
          {
+             float dx = points[0].X - mouse.X,
+                   dy = points[0].Y - mouse.Y;
+
              for (int i = 0; i < points.Count;i++ )
              {
-                 points[i] = new PointF(points[i].X + mouse.X, points[i].Y + mouse.Y);
+                 points[i] = new PointF(this.points[i].X + dx, this.points[i].Y + dy);
              }
 
          }
