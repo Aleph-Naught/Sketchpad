@@ -158,6 +158,7 @@
             this.freeHandBtn.Size = new System.Drawing.Size(75, 23);
             this.freeHandBtn.TabIndex = 0;
             this.freeHandBtn.Text = "Free Hand";
+            this.freeHandBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.freeHandBtn.UseVisualStyleBackColor = true;
             this.freeHandBtn.Click += new System.EventHandler(this.shapeBtn_Click);
             // 
@@ -169,6 +170,7 @@
             this.polygonBtn.Size = new System.Drawing.Size(75, 23);
             this.polygonBtn.TabIndex = 6;
             this.polygonBtn.Text = "Polygon";
+            this.polygonBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.polygonBtn.UseVisualStyleBackColor = true;
             this.polygonBtn.Click += new System.EventHandler(this.shapeBtn_Click);
             // 
@@ -182,6 +184,7 @@
             this.lineBtn.TabIndex = 1;
             this.lineBtn.TabStop = true;
             this.lineBtn.Text = "Line";
+            this.lineBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lineBtn.UseVisualStyleBackColor = true;
             this.lineBtn.Click += new System.EventHandler(this.shapeBtn_Click);
             // 
@@ -193,6 +196,7 @@
             this.circleBtn.Size = new System.Drawing.Size(75, 23);
             this.circleBtn.TabIndex = 5;
             this.circleBtn.Text = "Circle";
+            this.circleBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.circleBtn.UseVisualStyleBackColor = true;
             this.circleBtn.Click += new System.EventHandler(this.shapeBtn_Click);
             // 
@@ -204,6 +208,7 @@
             this.rectangleButton.Size = new System.Drawing.Size(75, 23);
             this.rectangleButton.TabIndex = 2;
             this.rectangleButton.Text = "Rectangle";
+            this.rectangleButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rectangleButton.UseVisualStyleBackColor = true;
             this.rectangleButton.Click += new System.EventHandler(this.shapeBtn_Click);
             // 
@@ -215,6 +220,7 @@
             this.squareBtn.Size = new System.Drawing.Size(75, 23);
             this.squareBtn.TabIndex = 4;
             this.squareBtn.Text = "Square";
+            this.squareBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.squareBtn.UseVisualStyleBackColor = true;
             this.squareBtn.Click += new System.EventHandler(this.shapeBtn_Click);
             // 
@@ -226,6 +232,7 @@
             this.ellipseBtn.Size = new System.Drawing.Size(75, 23);
             this.ellipseBtn.TabIndex = 3;
             this.ellipseBtn.Text = "Ellipse";
+            this.ellipseBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ellipseBtn.UseVisualStyleBackColor = true;
             this.ellipseBtn.Click += new System.EventHandler(this.shapeBtn_Click);
             // 
@@ -311,7 +318,7 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        public System.Windows.Forms.ToolStripStatusLabel selectedShapeLabel;
+        private System.Windows.Forms.ToolStripStatusLabel selectedShapeLabel;
     }
 }
 
