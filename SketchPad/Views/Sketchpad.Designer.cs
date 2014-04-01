@@ -318,7 +318,7 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel selectedShapeLabel;
+        public System.Windows.Forms.ToolStripStatusLabel selectedShapeLabel;
     }
 }
 
