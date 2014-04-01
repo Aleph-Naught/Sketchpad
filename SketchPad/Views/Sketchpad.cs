@@ -67,9 +67,16 @@ namespace SketchPad
 
         private void selCheck_CheckedChanged(object sender, EventArgs e)
         {
+            _controller.selectBtn();
+        }
 
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            _controller.selectBtn();
         }
 
 
     }
+
+
 }
