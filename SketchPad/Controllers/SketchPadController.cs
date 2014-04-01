@@ -53,7 +53,7 @@ namespace SketchPad.Controllers
 
         public void shapeBtn_Click(object sender, EventArgs e)
         {
-            Button clickedBtn = (Button)sender;
+            RadioButton clickedBtn = (RadioButton)sender;
 
             _state._selected_shape = clickedBtn.Text;
             
@@ -108,11 +108,9 @@ namespace SketchPad.Controllers
             {
                 selectClick(e);
                 if (currently_selected_shape != null)
-                {
-                    refPoint = currently_selected_shape.getPos();
-                    dx = refPoint.X - e.X;
-                    dy = refPoint.Y - e.Y;
-                }
+                refPoint = currently_selected_shape.getPos();
+                dx = refPoint.X - e.X;
+                dy = refPoint.Y - e.Y;
                     
                 
                 return;
