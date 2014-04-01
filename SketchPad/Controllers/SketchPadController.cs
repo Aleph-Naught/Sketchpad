@@ -111,7 +111,6 @@ namespace SketchPad.Controllers
                 refPoint = currently_selected_shape.getPos();
                 dx = refPoint.X - e.X;
                 dy = refPoint.Y - e.Y;
-                    
                 
                 return;
             }
@@ -206,6 +205,11 @@ namespace SketchPad.Controllers
         {
             _state._isMouseDown = false;
 
+            if (currently_selected_shape!= null && old_colour!=null && selecting)
+            {
+                currently_selected_shape.color = old_colour;
+            }
+
             if (!poly && !selecting)
             {
                 Shape shape = current_shape.clone();
@@ -287,6 +291,7 @@ namespace SketchPad.Controllers
 
         public void selectClick(MouseEventArgs e)
         {
+
             for(int i = _state.getShapes().Count-1; i >= 0; i--)
             {
                 if (_state.getShapes()[i].clicked(new Point(e.X, e.Y)))

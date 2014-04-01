@@ -18,6 +18,8 @@ namespace SketchPad
         {
             InitializeComponent();
             _controller = new Controllers.SketchPadController(this);
+
+            selectedShapeLabel.Text = "";
         }
 
         public ColorDialog getColourDialog()

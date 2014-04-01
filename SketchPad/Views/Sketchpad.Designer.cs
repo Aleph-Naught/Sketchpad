@@ -44,6 +44,8 @@
             this.ellipseBtn = new System.Windows.Forms.RadioButton();
             this.canvas1 = new System.Windows.Forms.PictureBox();
             this.colourDialog = new System.Windows.Forms.ColorDialog();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.selectedShapeLabel = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -51,6 +53,7 @@
             this.modeBox.SuspendLayout();
             this.shapeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvas1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -69,6 +72,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
+            this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer1.Panel2.Controls.Add(this.canvas1);
             this.splitContainer1.Size = new System.Drawing.Size(768, 495);
             this.splitContainer1.SplitterDistance = 125;
@@ -241,6 +245,22 @@
             this.colourDialog.AllowFullOpen = false;
             this.colourDialog.SolidColorOnly = true;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectedShapeLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 473);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(639, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // selectedShapeLabel
+            // 
+            this.selectedShapeLabel.Name = "selectedShapeLabel";
+            this.selectedShapeLabel.Size = new System.Drawing.Size(118, 17);
+            this.selectedShapeLabel.Text = "toolStripStatusLabel1";
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,11 +273,14 @@
             this.Text = "SketchPad";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.modeBox.ResumeLayout(false);
             this.shapeGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.canvas1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -280,6 +303,8 @@
         private System.Windows.Forms.GroupBox modeBox;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel selectedShapeLabel;
     }
 }
 
