@@ -213,18 +213,17 @@ namespace SketchPad.Controllers
                 _state.addShape(shape);
             }
 
-            if(move_initiated && selecting)
+            else if(move_initiated && selecting)
             {
                 try
                 {
                     currently_selected_shape.color = old_colour;
+                    Shape shape = currently_selected_shape.clone();
+                    _state.addShape(shape);
+                    currently_selected_shape = null;
+                    _sketchpad.Refresh();
+                    _sketchpad.Refresh();
                     selecting = false;
-                    move_initiated = false;
-                    //Shape shape = currently_selected_shape.clone();
-                    //_state.addShape(shape);
-                    //currently_selected_shape = null;
-                    //_sketchpad.Refresh();
-                    //_sketchpad.Refresh();
                 }
                 catch
                 {
