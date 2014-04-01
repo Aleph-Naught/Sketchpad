@@ -107,6 +107,8 @@ namespace SketchPad.Controllers
                 refPoint = currently_selected_shape.getPos();
                 dx = refPoint.X - e.X;
                 dy = refPoint.Y - e.Y;
+
+                
                 
                 return;
             }
@@ -199,6 +201,9 @@ namespace SketchPad.Controllers
 
         public void mouseUp(object sender, MouseEventArgs e)
         {
+
+            _sketchpad.selectedShapeLabel.Text = "Double Click to Copy";
+
             _state._isMouseDown = false;
 
             if (currently_selected_shape!= null && old_colour!=null && selecting)
@@ -295,6 +300,9 @@ namespace SketchPad.Controllers
 
                     if (_state.getShapes()[i].clicked(new Point(e.X, e.Y)))
                     {
+
+                        _sketchpad.selectedShapeLabel.Text = current_shape.GetType().ToString().Split('.')[2];
+
                         old_colour = _state.getShapes()[i].color;
                         _state.getShapes()[i].setColor(Color.Red);
                         currently_selected_shape = _state.getShapes()[i];
@@ -305,6 +313,18 @@ namespace SketchPad.Controllers
                         
                 }
             }
+        }
+
+        public void reSize()
+        {
+
+            bm = new Bitmap(_sketchpad.Width, _sketchpad.Height);
+
+            _sketchpad.canvas1.Image = bm;
+
+            g = Graphics.FromImage(_sketchpad.canvas1.Image);
+
+            _sketchpad.canvas1.Refresh();
         }
 
         public void selectBtn()

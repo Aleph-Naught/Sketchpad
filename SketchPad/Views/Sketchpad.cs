@@ -12,7 +12,6 @@ namespace SketchPad
 {
     public partial class mainForm : Form
     {
-        
         private SketchPad.Controllers.SketchPadController _controller;
 
         public mainForm()
@@ -20,7 +19,7 @@ namespace SketchPad
             InitializeComponent();
             _controller = new Controllers.SketchPadController(this);
 
-            selectedShapeLabel.Text = "";
+            selectedShapeLabel.Text = "Double Click to Copy";
         }
 
         public ColorDialog getColourDialog()
@@ -78,9 +77,9 @@ namespace SketchPad
             _controller.selectBtn();
         }
 
-        private void mainForm_Load(object sender, EventArgs e)
+        private void mainForm_ResizeEnd(object sender, EventArgs e)
         {
-
+            _controller.reSize();
         }
 
 
