@@ -18,6 +18,8 @@ namespace SketchPad.Models
 
         public abstract void set(int[] paramaters);
 
+        public abstract void move(Point mouse);
+
         public abstract Shape clone();
 
         public abstract bool clicked(Point p);

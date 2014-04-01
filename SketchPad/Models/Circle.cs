@@ -9,7 +9,7 @@ namespace SketchPad.Models
 {
     class Circle : Shape
     {
-         int x;
+        int x;
         int y;
         int width;
         int height;
