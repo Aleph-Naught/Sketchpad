@@ -91,6 +91,7 @@ namespace SketchPad.Controllers
         {
             _sketchpad.canvas1.Invalidate();
             _state.clearShapes();
+            g.Clear(Color.White);
         }
 
         public void mouseDown(object sender, MouseEventArgs e)
