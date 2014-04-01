@@ -12,6 +12,7 @@ namespace SketchPad
 {
     public partial class mainForm : Form
     {
+        
         private SketchPad.Controllers.SketchPadController _controller;
 
         public mainForm()
@@ -75,6 +76,11 @@ namespace SketchPad
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             _controller.selectBtn();
+        }
+
+        private void mainForm_Load(object sender, EventArgs e)
+        {
+
         }
 
 
