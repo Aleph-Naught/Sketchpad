@@ -19,12 +19,16 @@ namespace SketchPad.Controllers
 
         private Shape current_shape, currently_selected_shape;
 
-        private int init_x, init_y;
+        private int init_x, init_y, dx, dy;
+        private Point refPoint;
+
+        private Color old_colour;
 
         private bool poly = false;
         private bool polyStart = true;
 
         private bool selecting = false;
+        private bool move_initiated = false;
 
         Bitmap bm;
 
@@ -99,9 +103,17 @@ namespace SketchPad.Controllers
         public void mouseDown(object sender, MouseEventArgs e)
         {
 
+            _state._isMouseDown = true;
+
             if(selecting)
             {
                 selectClick(e);
+                if (currently_selected_shape != null) { 
+                refPoint = currently_selected_shape.getPos();
+                dx = refPoint.X - e.X;
+                dy = refPoint.Y - e.Y;
+            }
+                
                 return;
             }
 
@@ -193,17 +205,58 @@ namespace SketchPad.Controllers
 
         public void mouseUp(object sender, MouseEventArgs e)
         {
+            _state._isMouseDown = false;
+
             if (!poly && !selecting)
             {
                 Shape shape = current_shape.clone();
-                _state._isMouseDown = false;
                 _state.addShape(shape);
+            }
+
+            if(move_initiated && selecting)
+            {
+                try
+                {
+                    currently_selected_shape.color = old_colour;
+                    Shape shape = currently_selected_shape.clone();
+                    _state.addShape(shape);
+                    currently_selected_shape = null;
+                    _sketchpad.Refresh();
+                    _sketchpad.Refresh();
+                }
+                catch
+                {
+
+                }
             }
         }
 
         public void mouseMove(object sender, MouseEventArgs e)
         {
-            if (_state._isMouseDown)
+            if (_state._isMouseDown && selecting)
+            {
+                try
+                {
+                    _state.removeShape(currently_selected_shape);
+                    _sketchpad.canvas1.Invalidate();
+                    g.Clear(Color.White);
+                    _sketchpad.canvas1.Refresh();
+
+                    for (int i = 0; i < _state.getShapes().Count; i++)
+                    {
+                        _state.getShapes()[i].draw(_sketchpad.canvas1.CreateGraphics(), new Pen(_state.getShapes()[i].color));
+                    }
+                    currently_selected_shape.move(new Point(dx+e.X, dy+e.Y));
+                    currently_selected_shape.draw(_sketchpad.canvas1.CreateGraphics(), _state.getPen());
+                    move_initiated = true;
+                }
+                catch
+                {
+
+                }
+            }
+
+            else if (_state._isMouseDown && !selecting)
             {
                 _sketchpad.canvas1.Refresh();
 
@@ -238,12 +291,18 @@ namespace SketchPad.Controllers
             {
                 if (_state.getShapes()[i].clicked(new Point(e.X, e.Y)))
                 {
-                    _state.getShapes()[i].setColor(Color.Red);
-                    currently_selected_shape = _state.getShapes()[i];
-                    _sketchpad.canvas1.Refresh();
-                    _sketchpad.canvas1.Refresh();
-                    return;
-                }  
+
+                    if (_state.getShapes()[i].clicked(new Point(e.X, e.Y)))
+                    {
+                        old_colour = _state.getShapes()[i].color;
+                        _state.getShapes()[i].setColor(Color.Red);
+                        currently_selected_shape = _state.getShapes()[i];
+                        _sketchpad.canvas1.Refresh();
+                        _sketchpad.canvas1.Refresh();
+                        return;
+                    }
+                        
+                }
             }
         }
 

@@ -9,7 +9,7 @@ namespace SketchPad.Models
 {
     class Circle : Shape
     {
-         int x;
+        int x;
         int y;
         int width;
         int height;
@@ -46,6 +46,11 @@ namespace SketchPad.Models
             g.DrawEllipse(i, new System.Drawing.Rectangle(x, y, width, height));
         }
 
+        public override void move(Point mouse)
+        {
+            throw new NotImplementedException();
+        }
+
         override public void set(int[] paramaters)
         {
             x = paramaters[0];
@@ -65,6 +70,10 @@ namespace SketchPad.Models
         override public void setColor(Color c)
         {
             color = c;
+        }
+        public override Point getPos()
+        {
+            throw new NotImplementedException();
         }
     }
 }

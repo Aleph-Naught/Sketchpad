@@ -65,5 +65,16 @@ namespace SketchPad.Models
         {
             color = c;
         }
+
+        public override void move(Point mouse)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Point getPos()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

@@ -43,5 +43,17 @@ namespace SketchPad.Models
         {
             return new Pen(_selected_colour, width);
         }
+
+        public void removeShape(Shape s)
+        {
+            foreach (Shape el in _shapes)
+            {
+                if (s.Equals(el))
+                {
+                    _shapes.Remove(el);
+                    return;
+                }
+            }
+        }
     }
 }
