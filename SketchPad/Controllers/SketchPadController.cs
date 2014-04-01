@@ -107,11 +107,11 @@ namespace SketchPad.Controllers
             if(selecting)
             {
                 selectClick(e);
-                if (currently_selected_shape != null) { 
+                if (currently_selected_shape != null) {
                 refPoint = currently_selected_shape.getPos();
                 dx = refPoint.X - e.X;
                 dy = refPoint.Y - e.Y;
-            }
+                    
                 
                 return;
             }
@@ -309,6 +309,15 @@ namespace SketchPad.Controllers
         public void selectBtn()
         {
             selecting = !selecting;
+            if (selecting)
+            {
+                _sketchpad.Cursor = Cursors.Hand;
+                Application.DoEvents();
+            }
+            else
+            {
+                _sketchpad.Cursor = Cursors.Default;
+            }
         }
     }
 }

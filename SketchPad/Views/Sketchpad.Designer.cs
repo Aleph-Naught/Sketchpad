@@ -32,8 +32,6 @@
             this.modeBox = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.selCheck = new System.Windows.Forms.CheckBox();
-            this.selectBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
             this.colourBtn = new System.Windows.Forms.Button();
             this.shapeGroupBox = new System.Windows.Forms.GroupBox();
@@ -64,8 +62,6 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.modeBox);
-            this.splitContainer1.Panel1.Controls.Add(this.selCheck);
-            this.splitContainer1.Panel1.Controls.Add(this.selectBtn);
             this.splitContainer1.Panel1.Controls.Add(this.clearBtn);
             this.splitContainer1.Panel1.Controls.Add(this.colourBtn);
             this.splitContainer1.Panel1.Controls.Add(this.shapeGroupBox);
@@ -99,7 +95,7 @@
             this.radioButton2.Text = "Move";
             this.radioButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.selectBtn_Click);
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -114,34 +110,9 @@
             this.radioButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // selCheck
-            // 
-            this.selCheck.Appearance = System.Windows.Forms.Appearance.Button;
-            this.selCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.selCheck.Location = new System.Drawing.Point(21, 429);
-            this.selCheck.Name = "selCheck";
-            this.selCheck.Size = new System.Drawing.Size(75, 23);
-            this.selCheck.TabIndex = 12;
-            this.selCheck.Text = "Select";
-            this.selCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.selCheck.UseVisualStyleBackColor = true;
-            this.selCheck.Visible = false;
-            this.selCheck.CheckedChanged += new System.EventHandler(this.selCheck_CheckedChanged);
-            // 
-            // selectBtn
-            // 
-            this.selectBtn.Location = new System.Drawing.Point(21, 460);
-            this.selectBtn.Name = "selectBtn";
-            this.selectBtn.Size = new System.Drawing.Size(75, 23);
-            this.selectBtn.TabIndex = 10;
-            this.selectBtn.Text = "Select";
-            this.selectBtn.UseVisualStyleBackColor = true;
-            this.selectBtn.Visible = false;
-            this.selectBtn.Click += new System.EventHandler(this.selectBtn_Click);
-            // 
             // clearBtn
             // 
-            this.clearBtn.Location = new System.Drawing.Point(21, 400);
+            this.clearBtn.Location = new System.Drawing.Point(21, 386);
             this.clearBtn.Name = "clearBtn";
             this.clearBtn.Size = new System.Drawing.Size(75, 23);
             this.clearBtn.TabIndex = 9;
@@ -151,7 +122,7 @@
             // 
             // colourBtn
             // 
-            this.colourBtn.Location = new System.Drawing.Point(21, 370);
+            this.colourBtn.Location = new System.Drawing.Point(21, 356);
             this.colourBtn.Name = "colourBtn";
             this.colourBtn.Size = new System.Drawing.Size(75, 23);
             this.colourBtn.TabIndex = 7;
@@ -299,8 +270,6 @@
         private System.Windows.Forms.Button clearBtn;
         public System.Windows.Forms.SplitContainer splitContainer1;
         public System.Windows.Forms.PictureBox canvas1;
-        private System.Windows.Forms.CheckBox selCheck;
-        private System.Windows.Forms.Button selectBtn;
         private System.Windows.Forms.GroupBox modeBox;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
