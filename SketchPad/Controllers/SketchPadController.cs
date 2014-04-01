@@ -25,6 +25,7 @@ namespace SketchPad.Controllers
         private bool polyStart = true;
 
         private bool selecting = false;
+        private bool move_initiated = false;
 
         Bitmap bm;
 
@@ -99,10 +100,11 @@ namespace SketchPad.Controllers
         public void mouseDown(object sender, MouseEventArgs e)
         {
 
+            _state._isMouseDown = true;
+
             if(selecting)
             {
                 selectClick(e);
-                currently_selected_shape.move(new Point(e.X, e.Y));
                 return;
             }
 
@@ -194,11 +196,29 @@ namespace SketchPad.Controllers
 
         public void mouseUp(object sender, MouseEventArgs e)
         {
+            _state._isMouseDown = false;
+
             if (!poly && !selecting)
             {
                 Shape shape = current_shape.clone();
-                _state._isMouseDown = false;
                 _state.addShape(shape);
+            }
+
+            if(move_initiated && selecting)
+            {
+                try
+                {
+                    currently_selected_shape.color = _state._selected_colour;
+                    Shape shape = currently_selected_shape.clone();
+                    _state.addShape(shape);
+                    currently_selected_shape = null;
+                    _sketchpad.Refresh();
+                    _sketchpad.Refresh();
+                }
+                catch
+                {
+
+                }
             }
         }
 
@@ -206,8 +226,25 @@ namespace SketchPad.Controllers
         {
             if (_state._isMouseDown && selecting)
             {
-                _state.removeShape(currently_selected_shape);
-                _sketchpad.canvas1.Refresh();
+                try
+                {
+                    _state.removeShape(currently_selected_shape);
+                    _sketchpad.canvas1.Invalidate();
+                    g.Clear(Color.White);
+                    _sketchpad.canvas1.Refresh();
+
+                    for (int i = 0; i < _state.getShapes().Count; i++)
+                    {
+                        _state.getShapes()[i].draw(_sketchpad.canvas1.CreateGraphics(), _state.getPen());
+                    }
+                    currently_selected_shape.move(new Point(e.X, e.Y));
+                    currently_selected_shape.draw(_sketchpad.canvas1.CreateGraphics(), _state.getPen());
+                    move_initiated = true;
+                }
+                catch
+                {
+
+                }
             }
 
             else if (_state._isMouseDown && !selecting)
