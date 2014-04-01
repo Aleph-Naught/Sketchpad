@@ -19,7 +19,8 @@ namespace SketchPad.Controllers
 
         private Shape current_shape, currently_selected_shape;
 
-        private int init_x, init_y;
+        private int init_x, init_y, dx, dy;
+        private Point refPoint;
 
         private Color old_colour;
 
@@ -107,6 +108,12 @@ namespace SketchPad.Controllers
             if(selecting)
             {
                 selectClick(e);
+                if (currently_selected_shape != null) { 
+                refPoint = currently_selected_shape.getPos();
+                int dx = refPoint.X - e.X,
+                    dy = refPoint.Y - e.Y;
+            }
+                
                 return;
             }
 
@@ -239,8 +246,7 @@ namespace SketchPad.Controllers
                     {
                         _state.getShapes()[i].draw(_sketchpad.canvas1.CreateGraphics(), new Pen(_state.getShapes()[i].color));
                     }
-                    Point tmp = currently_selected_shape.getPos();
-                    currently_selected_shape.move(new Point(tmp.X+e.X, tmp.Y+e.Y));
+                    currently_selected_shape.move(new Point(dx+e.X, dy+e.Y));
                     currently_selected_shape.draw(_sketchpad.canvas1.CreateGraphics(), _state.getPen());
                     move_initiated = true;
                 }
