@@ -21,6 +21,8 @@ namespace SketchPad.Controllers
 
         private int init_x, init_y;
 
+        private Color old_colour;
+
         private bool poly = false;
         private bool polyStart = true;
 
@@ -208,7 +210,7 @@ namespace SketchPad.Controllers
             {
                 try
                 {
-                    currently_selected_shape.color = _state._selected_colour;
+                    currently_selected_shape.color = old_colour;
                     Shape shape = currently_selected_shape.clone();
                     _state.addShape(shape);
                     currently_selected_shape = null;
@@ -235,7 +237,7 @@ namespace SketchPad.Controllers
 
                     for (int i = 0; i < _state.getShapes().Count; i++)
                     {
-                        _state.getShapes()[i].draw(_sketchpad.canvas1.CreateGraphics(), _state.getPen());
+                        _state.getShapes()[i].draw(_sketchpad.canvas1.CreateGraphics(), new Pen(_state.getShapes()[i].color));
                     }
                     currently_selected_shape.move(new Point(e.X, e.Y));
                     currently_selected_shape.draw(_sketchpad.canvas1.CreateGraphics(), _state.getPen());
@@ -284,6 +286,7 @@ namespace SketchPad.Controllers
                 {
                     if (_state.getShapes()[i].clicked(new Point(e.X, e.Y)))
                     {
+                        old_colour = _state.getShapes()[i].color;
                         _state.getShapes()[i].setColor(Color.Red);
                         currently_selected_shape = _state.getShapes()[i];
                         _sketchpad.canvas1.Refresh();
