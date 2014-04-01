@@ -71,6 +71,8 @@ namespace SketchPad.Models
                 points.Add(points[0]);
                 return;
             }
+
+            points.Add(new Point(paramaters[0], paramaters[1]));
         }
 
         override public Shape clone()
