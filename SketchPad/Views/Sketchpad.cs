@@ -19,7 +19,7 @@ namespace SketchPad
             InitializeComponent();
             _controller = new Controllers.SketchPadController(this);
 
-            selectedShapeLabel.Text = "";
+            selectedShapeLabel.Text = "Double Click to Copy";
         }
 
         public ColorDialog getColourDialog()
@@ -75,6 +75,11 @@ namespace SketchPad
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             _controller.selectBtn();
+        }
+
+        private void mainForm_ResizeEnd(object sender, EventArgs e)
+        {
+            _controller.reSize();
         }
 
 

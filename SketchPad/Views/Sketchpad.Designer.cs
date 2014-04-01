@@ -42,18 +42,18 @@
             this.rectangleButton = new System.Windows.Forms.RadioButton();
             this.squareBtn = new System.Windows.Forms.RadioButton();
             this.ellipseBtn = new System.Windows.Forms.RadioButton();
-            this.canvas1 = new System.Windows.Forms.PictureBox();
-            this.colourDialog = new System.Windows.Forms.ColorDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.selectedShapeLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.canvas1 = new System.Windows.Forms.PictureBox();
+            this.colourDialog = new System.Windows.Forms.ColorDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.modeBox.SuspendLayout();
             this.shapeGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.canvas1)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.canvas1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -227,24 +227,6 @@
             this.ellipseBtn.UseVisualStyleBackColor = true;
             this.ellipseBtn.Click += new System.EventHandler(this.shapeBtn_Click);
             // 
-            // canvas1
-            // 
-            this.canvas1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.canvas1.Location = new System.Drawing.Point(0, 0);
-            this.canvas1.Name = "canvas1";
-            this.canvas1.Size = new System.Drawing.Size(639, 495);
-            this.canvas1.TabIndex = 0;
-            this.canvas1.TabStop = false;
-            this.canvas1.Paint += new System.Windows.Forms.PaintEventHandler(this.canvas1_Paint);
-            this.canvas1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseDown);
-            this.canvas1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseMove);
-            this.canvas1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseUp);
-            // 
-            // colourDialog
-            // 
-            this.colourDialog.AllowFullOpen = false;
-            this.colourDialog.SolidColorOnly = true;
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -261,6 +243,26 @@
             this.selectedShapeLabel.Size = new System.Drawing.Size(118, 17);
             this.selectedShapeLabel.Text = "toolStripStatusLabel1";
             // 
+            // canvas1
+            // 
+            this.canvas1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.canvas1.Location = new System.Drawing.Point(0, 0);
+            this.canvas1.Name = "canvas1";
+            this.canvas1.Size = new System.Drawing.Size(639, 495);
+            this.canvas1.TabIndex = 0;
+            this.canvas1.TabStop = false;
+            this.canvas1.Paint += new System.Windows.Forms.PaintEventHandler(this.canvas1_Paint);
+            this.canvas1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseDown);
+            this.canvas1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseMove);
+            this.canvas1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.canvas1_MouseUp);
+            // 
+            // colourDialog
+            // 
+            this.colourDialog.AllowFullOpen = false;
+            this.colourDialog.SolidColorOnly = true;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,6 +273,8 @@
             this.KeyPreview = true;
             this.Name = "mainForm";
             this.Text = "SketchPad";
+            this.ResizeEnd += new System.EventHandler(this.mainForm_ResizeEnd);
+            this.SizeChanged += new System.EventHandler(this.mainForm_ResizeEnd);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
@@ -278,9 +282,9 @@
             this.splitContainer1.ResumeLayout(false);
             this.modeBox.ResumeLayout(false);
             this.shapeGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.canvas1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.canvas1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -304,7 +308,7 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel selectedShapeLabel;
+        public System.Windows.Forms.ToolStripStatusLabel selectedShapeLabel;
     }
 }
 
