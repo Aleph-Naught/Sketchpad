@@ -68,12 +68,13 @@ namespace SketchPad.Models
 
         public override void move(Point mouse)
         {
-            throw new NotImplementedException();
+            x = mouse.X;
+            y = mouse.Y;
         }
 
         public override Point getPos()
         {
-            throw new NotImplementedException();
+            return new Point(x, y);
         }
 
     }
