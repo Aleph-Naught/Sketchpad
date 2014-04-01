@@ -56,7 +56,6 @@ namespace SketchPad.Controllers
             Button clickedBtn = (Button)sender;
 
             _state._selected_shape = clickedBtn.Text;
-
             
             String typeName = clickedBtn.Text;
 
@@ -223,7 +222,7 @@ namespace SketchPad.Controllers
                     currently_selected_shape = null;
                     _sketchpad.Refresh();
                     _sketchpad.Refresh();
-                    selecting = false;
+                    //selecting = false;
                 }
                 catch
                 {

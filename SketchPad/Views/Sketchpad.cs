@@ -65,5 +65,11 @@ namespace SketchPad
             _controller.selectBtn();
         }
 
+        private void selCheck_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

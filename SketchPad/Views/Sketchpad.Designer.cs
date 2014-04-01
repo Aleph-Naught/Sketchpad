@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.modeBox = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.selCheck = new System.Windows.Forms.CheckBox();
+            this.selectBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
             this.colourBtn = new System.Windows.Forms.Button();
             this.shapeGroupBox = new System.Windows.Forms.GroupBox();
@@ -41,11 +46,11 @@
             this.ellipseBtn = new System.Windows.Forms.Button();
             this.canvas1 = new System.Windows.Forms.PictureBox();
             this.colourDialog = new System.Windows.Forms.ColorDialog();
-            this.selectBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.modeBox.SuspendLayout();
             this.shapeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvas1)).BeginInit();
             this.SuspendLayout();
@@ -58,6 +63,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.modeBox);
+            this.splitContainer1.Panel1.Controls.Add(this.selCheck);
             this.splitContainer1.Panel1.Controls.Add(this.selectBtn);
             this.splitContainer1.Panel1.Controls.Add(this.clearBtn);
             this.splitContainer1.Panel1.Controls.Add(this.colourBtn);
@@ -71,9 +78,70 @@
             this.splitContainer1.SplitterDistance = 125;
             this.splitContainer1.TabIndex = 0;
             // 
+            // modeBox
+            // 
+            this.modeBox.Controls.Add(this.radioButton2);
+            this.modeBox.Controls.Add(this.radioButton1);
+            this.modeBox.Location = new System.Drawing.Point(0, 0);
+            this.modeBox.Name = "modeBox";
+            this.modeBox.Size = new System.Drawing.Size(122, 85);
+            this.modeBox.TabIndex = 15;
+            this.modeBox.TabStop = false;
+            this.modeBox.Text = "Mode";
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton2.Location = new System.Drawing.Point(21, 50);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(75, 23);
+            this.radioButton2.TabIndex = 16;
+            this.radioButton2.Text = "Move";
+            this.radioButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.selectBtn_Click);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(21, 21);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(75, 23);
+            this.radioButton1.TabIndex = 15;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Draw";
+            this.radioButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // selCheck
+            // 
+            this.selCheck.Appearance = System.Windows.Forms.Appearance.Button;
+            this.selCheck.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.selCheck.Location = new System.Drawing.Point(21, 429);
+            this.selCheck.Name = "selCheck";
+            this.selCheck.Size = new System.Drawing.Size(75, 23);
+            this.selCheck.TabIndex = 12;
+            this.selCheck.Text = "Select";
+            this.selCheck.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.selCheck.UseVisualStyleBackColor = true;
+            this.selCheck.Visible = false;
+            this.selCheck.CheckedChanged += new System.EventHandler(this.selCheck_CheckedChanged);
+            // 
+            // selectBtn
+            // 
+            this.selectBtn.Location = new System.Drawing.Point(21, 460);
+            this.selectBtn.Name = "selectBtn";
+            this.selectBtn.Size = new System.Drawing.Size(75, 23);
+            this.selectBtn.TabIndex = 10;
+            this.selectBtn.Text = "Select";
+            this.selectBtn.UseVisualStyleBackColor = true;
+            this.selectBtn.Visible = false;
+            this.selectBtn.Click += new System.EventHandler(this.selectBtn_Click);
+            // 
             // clearBtn
             // 
-            this.clearBtn.Location = new System.Drawing.Point(21, 299);
+            this.clearBtn.Location = new System.Drawing.Point(21, 400);
             this.clearBtn.Name = "clearBtn";
             this.clearBtn.Size = new System.Drawing.Size(75, 23);
             this.clearBtn.TabIndex = 9;
@@ -83,7 +151,7 @@
             // 
             // colourBtn
             // 
-            this.colourBtn.Location = new System.Drawing.Point(21, 269);
+            this.colourBtn.Location = new System.Drawing.Point(21, 370);
             this.colourBtn.Name = "colourBtn";
             this.colourBtn.Size = new System.Drawing.Size(75, 23);
             this.colourBtn.TabIndex = 7;
@@ -100,7 +168,7 @@
             this.shapeGroupBox.Controls.Add(this.rectangleButton);
             this.shapeGroupBox.Controls.Add(this.squareBtn);
             this.shapeGroupBox.Controls.Add(this.ellipseBtn);
-            this.shapeGroupBox.Location = new System.Drawing.Point(3, 11);
+            this.shapeGroupBox.Location = new System.Drawing.Point(3, 91);
             this.shapeGroupBox.Name = "shapeGroupBox";
             this.shapeGroupBox.Size = new System.Drawing.Size(119, 238);
             this.shapeGroupBox.TabIndex = 8;
@@ -195,16 +263,6 @@
             this.colourDialog.AllowFullOpen = false;
             this.colourDialog.SolidColorOnly = true;
             // 
-            // selectBtn
-            // 
-            this.selectBtn.Location = new System.Drawing.Point(21, 329);
-            this.selectBtn.Name = "selectBtn";
-            this.selectBtn.Size = new System.Drawing.Size(75, 23);
-            this.selectBtn.TabIndex = 10;
-            this.selectBtn.Text = "Select";
-            this.selectBtn.UseVisualStyleBackColor = true;
-            this.selectBtn.Click += new System.EventHandler(this.selectBtn_Click);
-            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,6 +277,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.modeBox.ResumeLayout(false);
             this.shapeGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.canvas1)).EndInit();
             this.ResumeLayout(false);
@@ -240,7 +299,11 @@
         private System.Windows.Forms.Button clearBtn;
         public System.Windows.Forms.SplitContainer splitContainer1;
         public System.Windows.Forms.PictureBox canvas1;
+        private System.Windows.Forms.CheckBox selCheck;
         private System.Windows.Forms.Button selectBtn;
+        private System.Windows.Forms.GroupBox modeBox;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }
 
